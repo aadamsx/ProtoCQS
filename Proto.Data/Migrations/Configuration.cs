@@ -2,7 +2,6 @@ using Proto.Model.Entities;
 
 namespace Proto.Data.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ClientManagementContext>

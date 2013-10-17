@@ -1,27 +1,32 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Proto.Data.Configuration;
 using Proto.Model.Entities;
 
 namespace Proto.Data
 {
-    public class ClientManagementContext : DbContext
+    public class ClientManagementContext : DbContext, IDbContext
     {
-        //        static ClientManagementContext()
-        //        {
-        //#if DEBUG
-        //            Database.SetInitializer<ClientManagementContext>
-        //                (new DropCreateIfChangeInitializer());
-        //#else
-        //            Database.SetInitializer<ClientManagementContext> 
-        //                (new CreateInitializer ());
-        //#endif
-        //        }
+        private readonly Guid _instanceId;
+
         public ClientManagementContext()
             : base("Name=ClientManagementContext")
         {
             //Configuration.LazyLoadingEnabled = true;
+            _instanceId = Guid.NewGuid();
+        }
 
+        //public ClientManagementContext(string connectionstring)
+        //    : base("Name=ClientManagementContext")
+        //{
+        //    //Configuration.LazyLoadingEnabled = true;
+        //    _instanceId = Guid.NewGuid();
+        //}
+
+        public Guid InstanceId
+        {
+            get { return _instanceId; }
         }
 
         public DbSet<Tenant> Tenants { get; set; }
@@ -41,5 +46,9 @@ namespace Proto.Data
             modelBuilder.Configurations.Add(new ContactTypeConfig());
             modelBuilder.Configurations.Add(new ConnectionConfigurationConfig());
         }
+    }
+
+    public interface IDbContext
+    {
     }
 }

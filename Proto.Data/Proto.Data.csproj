@@ -47,15 +47,8 @@
       <HintPath>..\packages\SimpleInjector.2.3.5\lib\net40-client\SimpleInjector.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ConfigurationConfig.cs" />
@@ -65,7 +58,12 @@
     <Compile Include="Configuration\TenantConfig.cs" />
     <Compile Include="ClientManagementContext.cs" />
     <Compile Include="Infrastructure\ContextConfiguration.cs" />
+    <Compile Include="Infrastructure\DatabaseFactory.cs" />
+    <Compile Include="Infrastructure\IDbContext.cs" />
+    <Compile Include="Infrastructure\Infrastructure.cs" />
     <Compile Include="Infrastructure\NLogCommandInterceptor.cs" />
+    <Compile Include="Infrastructure\temp.cs" />
+    <Compile Include="Infrastructure\UnitOfWorkFactory.cs" />
     <Compile Include="Migrations\201309241551022_Init.cs" />
     <Compile Include="Migrations\201309241551022_Init.Designer.cs">
       <DependentUpon>201309241551022_Init.cs</DependentUpon>
@@ -89,9 +87,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
