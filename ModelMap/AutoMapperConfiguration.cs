@@ -1,7 +1,6 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using AutoMapper;
+﻿using AutoMapper;
 
-namespace Proto.Mvc.Mgmt.Mappers
+namespace ModelMap
 {
     public class AutoMapperConfiguration
     {

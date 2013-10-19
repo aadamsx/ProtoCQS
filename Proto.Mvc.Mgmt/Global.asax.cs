@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using ModelMap;
 using Proto.Mvc.Mgmt.App_Start;
-using Proto.Mvc.Mgmt.Mappers;
 
 namespace Proto.Mvc.Mgmt
 {

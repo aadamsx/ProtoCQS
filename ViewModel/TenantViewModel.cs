@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Proto.Mvc.Mgmt.Models
+namespace ViewModel
 {
     public class TenantViewModel
     {

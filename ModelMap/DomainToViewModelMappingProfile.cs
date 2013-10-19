@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
-using Proto.Mvc.Mgmt.Models;
 
-namespace Proto.Mvc.Mgmt.Mappers
+namespace ModelMap
 {
     public class DomainToViewModelMappingProfile : Profile
     {
@@ -14,7 +13,7 @@ namespace Proto.Mvc.Mgmt.Mappers
         {
             //Mapper.CreateMap<CurrentTenantsViewModel, CurrentTenants>(); //.ForMember(dest => dest.Category, opt => opt.Ignore());
             //Mapper.CreateMap<AllTenants, TenantDetailViewModel>();
-            Mapper.CreateMap<DataModel.Tenant, TenantViewModel>();
+            Mapper.CreateMap<DataModel.Tenant, ViewModel.TenantViewModel>();
         }
     }
 }

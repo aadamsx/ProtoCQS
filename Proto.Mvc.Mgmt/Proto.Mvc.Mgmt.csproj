@@ -205,12 +205,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Mappers\AutoMapperConfiguration.cs" />
-    <Compile Include="Mappers\DomainToViewModelMappingProfile.cs" />
-    <Compile Include="Mappers\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\TenantViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\AspNetTenantProvider.cs" />
     <Compile Include="Startup.cs" />
@@ -297,9 +293,17 @@
       <Project>{06307A67-DCF5-4E7E-9353-A5FE10E4D9C5}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ModelMap\ModelMap.csproj">
+      <Project>{19F9BDFC-46FB-4DBF-8E98-464B64AFAC40}</Project>
+      <Name>ModelMap</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Repository\Repository.csproj">
       <Project>{D69BBA16-BB4A-46F2-9D71-FDD71F74862B}</Project>
       <Name>Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{B2D6F35A-0D59-4235-B9BE-42754DE58D31}</Project>
+      <Name>ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
