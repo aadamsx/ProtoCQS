@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frameworks", "Frameworks", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{D69BBA16-BB4A-46F2-9D71-FDD71F74862B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View.Model", "View.Model\View.Model.csproj", "{B2D6F35A-0D59-4235-B9BE-42754DE58D31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "View.Model\ViewModel.csproj", "{B2D6F35A-0D59-4235-B9BE-42754DE58D31}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{EF275C75-A625-4B27-ACBE-30B41B9CE484}"
 EndProject

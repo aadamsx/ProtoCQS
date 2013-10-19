@@ -1,4 +1,4 @@
-﻿namespace Proto.Model.Entities
+﻿namespace ViewModel
 {
     public class TenantInfo
     {
