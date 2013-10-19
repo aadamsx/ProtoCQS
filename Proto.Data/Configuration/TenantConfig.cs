@@ -19,6 +19,11 @@ namespace Proto.Data.Configuration
             Property(t => t.PrimaryContactPhone).HasMaxLength(25).IsRequired();
             Property(t => t.OfficePhone).HasMaxLength(25).IsRequired();
 
+            Property(t => t.Street).HasColumnName("Street").HasMaxLength(50);
+            Property(t => t.City).HasColumnName("City").HasMaxLength(50);
+            Property(t => t.State).HasColumnName("State").HasMaxLength(2);
+            Property(t => t.Zip).HasColumnName("Zip").HasMaxLength(10);
+
             Property(t => t.RowVersion)
                 .IsRowVersion();
                 //.IsConcurrencyToken();

@@ -301,6 +301,10 @@
       <Project>{79C92AA3-8328-4E43-82C2-5A4C4B26C720}</Project>
       <Name>Proto.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{D69BBA16-BB4A-46F2-9D71-FDD71F74862B}</Project>
+      <Name>Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

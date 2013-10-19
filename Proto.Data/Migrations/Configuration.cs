@@ -40,13 +40,13 @@ namespace Proto.Data.Migrations
                 {
                     AccountNumber = "123",
                     Active = 1,
-                    BillingAddress = new Address()
-                    {
-                        Street = "123 foo dr.",
-                        City = "foo place",
-                        State = "tx",
-                        Zip = "123"
-                    },
+                    //BillingAddress = new Address()
+                    //{
+                    //    Street = "123 foo dr.",
+                    //    City = "foo place",
+                    //    State = "tx",
+                    //    Zip = "123"
+                    //},
                     ContactTypeId = 1,
                     Description = "foo immigration",
                     Email = "foo@immigration.com",
@@ -65,13 +65,13 @@ namespace Proto.Data.Migrations
                 {
                     AccountNumber = "234",
                     Active = 1,
-                    BillingAddress = new Address()
-                    {
-                        Street = "234 bar dr.",
-                        City = "bar place",
-                        State = "tx",
-                        Zip = "234"
-                    },
+                    //BillingAddress = new Address()
+                    //{
+                    //    Street = "234 bar dr.",
+                    //    City = "bar place",
+                    //    State = "tx",
+                    //    Zip = "234"
+                    //},
                     ContactTypeId = 1,
                     Description = "bar immigration",
                     Email = "bar@immigration.com",

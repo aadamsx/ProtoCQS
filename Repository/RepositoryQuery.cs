@@ -38,23 +38,39 @@ namespace Repository
             return this;
         }
 
+        //public IEnumerable<TEntity> GetPage(int page, int pageSize, out int totalCount)
+        //{
+        //    _page = page;
+        //    _pageSize = pageSize;
+        //    totalCount = _repository.Get(_filter).Count();
+
+        //    return _repository.Get(_filter, _orderByQuerable, _includeProperties, _page, _pageSize);
+        //}
         public IEnumerable<TEntity> GetPage(int page, int pageSize, out int totalCount)
         {
             _page = page;
             _pageSize = pageSize;
             totalCount = _repository.Get(_filter).Count();
 
-            return _repository.Get(_filter, _orderByQuerable, _includeProperties, _page, _pageSize);
+            return _repository.Get(_filter, _orderByQuerable, _includeProperties, _page, _pageSize).AsEnumerable();
         }
 
-        public IQueryable<TEntity> Get()
+        //public IQueryable<TEntity> Get()
+        //{
+        //    return _repository.Get(_filter, _orderByQuerable, _includeProperties, _page, _pageSize);
+        //}
+        public IEnumerable<TEntity> Get()
         {
-            return _repository.Get(_filter, _orderByQuerable, _includeProperties, _page, _pageSize);
+            return _repository.Get(_filter, _orderByQuerable, _includeProperties, _page, _pageSize).AsEnumerable();
         }
 
-        public IQueryable<TEntity> SqlQuery(string query, params object[] parameters)
+        //public IQueryable<TEntity> SqlQuery(string query, params object[] parameters)
+        //{
+        //    return _repository.SqlQuery(query, parameters).AsQueryable();
+        //}
+        public IEnumerable<TEntity> SqlQuery(string query, params object[] parameters)
         {
-            return _repository.SqlQuery(query, parameters).AsQueryable();
+            return _repository.SqlQuery(query, parameters).AsEnumerable();
         }
     }
 }

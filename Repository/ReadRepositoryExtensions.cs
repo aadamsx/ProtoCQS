@@ -9,6 +9,11 @@ namespace Repository
     public static class ReadRepositoryExtensions
     {
         // http://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=84
+        //public static Tenant GetById(
+        //    this IQueryable<Tenant> repository, int id)
+        //{
+        //    return GetSingle(repository, e => e.TenantId == id, id);
+        //}
         public static Tenant GetById(
             this IQueryable<Tenant> repository, int id)
         {

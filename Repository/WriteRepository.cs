@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using Proto.Data;
 
 namespace Repository
@@ -17,7 +19,7 @@ namespace Repository
         private ClientManagementContext context;
         public WriteRepository(ClientManagementContext context)
         {
-            if (context == null) throw new ArgumentNullException("context");
+            //if (context == null) throw new ArgumentNullException("context");
             this.context = context;
             //dbSet = context.Set<TEntity>();
             instanceId = Guid.NewGuid();
@@ -33,9 +35,9 @@ namespace Repository
         /// And a private Save() method that returns true or false so you can fallback easy in the controller depending on the result
         /// </summary>
         /// <returns></returns>
-        private bool Save()
+        private void Save()
         {
-            return context.SaveChanges() > 0;
+            context.SaveChanges();
         }
 
         public Guid InstanceId

@@ -1,4 +1,5 @@
 using Proto.Domain;
+using Repository;
 
 [assembly: WebActivator.PostApplicationStartMethod(typeof(Proto.Mvc.Mgmt.App_Start.SimpleInjectorInitializer), "Initialize")]
 
@@ -31,7 +32,7 @@ namespace Proto.Mvc.Mgmt.App_Start
      
         private static void InitializeContainer(Container container)
         {
-//#error Register your services here (remove this line).
+            RepositoryBoostrapper.Bootstrap(container);
             BusinessLayerBootstrapper.Bootstrap(container);
 
             // For instance:

@@ -35,13 +35,13 @@ namespace Proto.Domain.CommandHandlers.Tenant
                 Description = command.Description,
                 Email = command.Email,
                 OfficePhone = command.OfficePhone,
-                BillingAddress = new Address
-                {
-                    City = command.City,
-                    State = command.State,
-                    Street = command.Street,
-                    Zip = command.Zip
-                },
+                //BillingAddress = new Address
+                //{
+                //    City = command.City,
+                //    State = command.State,
+                //    Street = command.Street,
+                //    Zip = command.Zip
+                //},
 
                 RowVersion = command.RowVersion,
 

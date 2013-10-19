@@ -6,7 +6,7 @@ namespace Proto.Model.Entities
     {
         public Tenant()
         {
-            BillingAddress = new Address();
+            //BillingAddress = new Address();
         }
         public int TenantId { get; set; }
         public string AccountNumber { get; set; }
@@ -27,7 +27,12 @@ namespace Proto.Model.Entities
         public string OfficePhone { get; set; }
 
 
-        public Address BillingAddress { get; set; }
+        // public Address BillingAddress { get; set; }
+
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
 
         public Guid RowGuid { get; set; }
 

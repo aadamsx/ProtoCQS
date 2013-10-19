@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using Proto.Domain.CommandHandlers;
 using Proto.Domain.QueryHandlers;
 using SimpleInjector;

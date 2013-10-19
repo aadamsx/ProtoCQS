@@ -12,6 +12,8 @@ namespace Proto.Mvc.Mgmt.Mappers
                 x.AddProfile<DomainToViewModelMappingProfile>();
                 x.AddProfile<ViewModelToDomainMappingProfile>();
             });
+
+            Mapper.AssertConfigurationIsValid();
         }
     }
 }
