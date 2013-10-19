@@ -1,13 +1,14 @@
 ﻿using System.Linq;
 using Data;
+using DataModel;
 using Domain.Queries.Tenants;
 
 namespace Domain.QueryHandlers
 {
     public class TenantQueryHandlers :
-        IQueryHandler<GetTenantByIdQuery, Domain.Model.Tenant>,
+        IQueryHandler<GetTenantByIdQuery, Tenant>,
         //IQueryHandler<GetTenantsQuery, IEnumerable<Tenant>>,
-        IQueryHandler<GetCurrentTenantsQuery, IQueryable<Domain.Model.Tenant>>
+        IQueryHandler<GetCurrentTenantsQuery, IQueryable<Tenant>>
     {
         //private ClientManagementContextEntities context;
 
@@ -51,7 +52,7 @@ namespace Domain.QueryHandlers
         //        .ToList();
         //}
 
-        public IQueryable<Domain.Model.Tenant> Handle(GetCurrentTenantsQuery query)
+        public IQueryable<Tenant> Handle(GetCurrentTenantsQuery query)
         {
             return db.Tenants
                 .AsNoTracking()
@@ -61,7 +62,7 @@ namespace Domain.QueryHandlers
                 .Take(query.PageSize);
         }
 
-        public Domain.Model.Tenant Handle(GetTenantByIdQuery query)
+        public Tenant Handle(GetTenantByIdQuery query)
         {
             // If the return type was/is IQueryable<AllTenants>
             //return

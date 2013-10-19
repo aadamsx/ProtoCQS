@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Domain.Model
+namespace DataModel
 {
     public class ContactType
     {

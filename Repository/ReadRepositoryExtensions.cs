@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Proto.Model.Entities;
+using DataModel;
 
 namespace Repository
 {
@@ -14,14 +14,14 @@ namespace Repository
         //{
         //    return GetSingle(repository, e => e.TenantId == id, id);
         //}
-        public static Tenant GetById(
-            this IQueryable<Tenant> repository, int id)
+        public static DataModel.Tenant GetById(
+            this IQueryable<DataModel.Tenant> repository, int id)
         {
             return GetSingle(repository, e => e.TenantId == id, id);
         }
 
-        public static Tenant GetLast(
-            this IQueryable<Tenant> repository, int id)
+        public static DataModel.Tenant GetLast(
+            this IQueryable<DataModel.Tenant> repository, int id)
         {
             return GetLast(repository, e => e.TenantId == id, id);
         }

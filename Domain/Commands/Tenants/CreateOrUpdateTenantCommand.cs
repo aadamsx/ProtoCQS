@@ -1,5 +1,5 @@
 ﻿
-using Domain.Model;
+using DataModel;
 
 namespace Domain.Commands.Tenants
 {

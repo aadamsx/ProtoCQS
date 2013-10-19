@@ -1,4 +1,4 @@
-﻿namespace Domain.Model
+﻿namespace DataModel
 {
     public class Address
     {

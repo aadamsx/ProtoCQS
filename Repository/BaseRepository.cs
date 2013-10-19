@@ -1,9 +1,4 @@
-﻿using System;
-using System.Linq;
-using AutoMapper;
-using Proto.Data;
-
-namespace Repository
+﻿namespace Repository
 {
     //public class BaseRepository<T, U> where T : class
     //{

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using Proto.Model.Entities;
-
-namespace Repository
+﻿namespace Repository
 {
     /// <summary>
     /// http://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=84

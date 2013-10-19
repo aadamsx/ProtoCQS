@@ -5,7 +5,6 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using Data;
 using Domain.Commands.Tenants;
-using Domain.Model;
 
 namespace Domain.CommandHandlers.Tenant
 {
@@ -19,7 +18,7 @@ namespace Domain.CommandHandlers.Tenant
 
         void ICommandHandler<CreateOrUpdateTenantCommand>.Handle(CreateOrUpdateTenantCommand command)
         {
-            var tenant = new Domain.Model.Tenant
+            var tenant = new DataModel.Tenant
             {
                 TenantId = command.TenantId,
                 Name = command.Name,
@@ -111,8 +110,8 @@ namespace Domain.CommandHandlers.Tenant
                 // Get the current entity values and the values in the database
                 // as instances of the entity type
                 var entry = ex.Entries.Single();
-                command.ClientValues = (Domain.Model.Tenant)entry.Entity;
-                command.DatabaseValues = (Domain.Model.Tenant)entry.GetDatabaseValues().ToObject();
+                command.ClientValues = (DataModel.Tenant)entry.Entity;
+                command.DatabaseValues = (DataModel.Tenant)entry.GetDatabaseValues().ToObject();
                 command.RowVersion = command.DatabaseValues.RowVersion;
             }
             catch (DbUpdateException)

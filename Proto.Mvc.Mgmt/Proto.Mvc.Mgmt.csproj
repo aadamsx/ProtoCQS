@@ -289,6 +289,14 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
+      <Project>{79c92aa3-8328-4e43-82c2-5a4c4b26c720}</Project>
+      <Name>DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{06307A67-DCF5-4E7E-9353-A5FE10E4D9C5}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Repository\Repository.csproj">
       <Project>{D69BBA16-BB4A-46F2-9D71-FDD71F74862B}</Project>
       <Name>Repository</Name>

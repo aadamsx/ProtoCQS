@@ -1,5 +1,5 @@
 using System.Data.Entity.Migrations;
-using Domain.Model;
+using DataModel;
 
 namespace Data.Migrations
 {

@@ -1,4 +1,4 @@
-﻿namespace Domain.Model.Enums
+﻿namespace DataModel.Enums
 {
     public enum TenantType
     {

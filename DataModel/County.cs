@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain.Model
+namespace DataModel
 {
     public class County
     {

@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Proto.Model.Entities;
 using Proto.Mvc.Mgmt.Models;
 
 namespace Proto.Mvc.Mgmt.Mappers
@@ -15,7 +14,7 @@ namespace Proto.Mvc.Mgmt.Mappers
         {
             //Mapper.CreateMap<CurrentTenantsViewModel, CurrentTenants>(); //.ForMember(dest => dest.Category, opt => opt.Ignore());
 
-            Mapper.CreateMap<TenantViewModel, Tenant>()
+            Mapper.CreateMap<TenantViewModel, DataModel.Tenant>()
                 .ForMember(dest => dest.Type, opt => opt.Ignore());
             //Mapper.CreateMap<CategoryFormModel, CreateOrUpdateCategoryCommand>();
             //Mapper.CreateMap<ExpenseFormModel, CreateOrUpdateExpenseCommand>();

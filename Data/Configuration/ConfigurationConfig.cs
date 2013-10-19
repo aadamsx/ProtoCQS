@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using Domain.Model;
+using DataModel;
 
 namespace Data.Configuration
 {
