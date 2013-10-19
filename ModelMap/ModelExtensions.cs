@@ -11,12 +11,17 @@ namespace ModelMap
     {
         public static ViewModel.Tenant ToModel(this DataModel.Tenant model) 
         {
-            return (ViewModel.Tenant)Mapper.Map(model, model.GetType(), typeof(ViewModel.Tenant));
+            return Mapper.Map<DataModel.Tenant, ViewModel.Tenant>(model);
         }
 
         public static DataModel.Tenant ToModel(this ViewModel.Tenant model)
         {
-            return (DataModel.Tenant)Mapper.Map(model, model.GetType(), typeof(DataModel.Tenant));
+            return Mapper.Map<ViewModel.Tenant, DataModel.Tenant>(model);
+        }
+
+        public static IEnumerable<ViewModel.Tenant> ToModel(this IEnumerable<DataModel.Tenant> models)
+        {
+            return Mapper.Map<IEnumerable<DataModel.Tenant>, IEnumerable<ViewModel.Tenant>>(models);
         }
 
         //public static TModel ToModel<TModel>(this IEntity entity) where TModel : IBaseViewModel
