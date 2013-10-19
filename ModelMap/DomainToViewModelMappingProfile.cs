@@ -13,7 +13,7 @@ namespace ModelMap
         {
             //Mapper.CreateMap<CurrentTenantsViewModel, CurrentTenants>(); //.ForMember(dest => dest.Category, opt => opt.Ignore());
             //Mapper.CreateMap<AllTenants, TenantDetailViewModel>();
-            Mapper.CreateMap<DataModel.Tenant, ViewModel.TenantViewModel>();
+            Mapper.CreateMap<DataModel.Tenant, ViewModel.Tenant>();
         }
     }
 }

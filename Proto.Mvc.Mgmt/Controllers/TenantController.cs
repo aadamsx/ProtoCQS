@@ -38,7 +38,7 @@ namespace Proto.Mvc.Mgmt.Controllers
         {
             //var query = new GetCurrentTenantsQuery { PageIndex = 1, PageSize = 10 };
             var tenants = ReadRepository.GetAll();
-            return View(Mapper.Map<IEnumerable<DataModel.Tenant>, IEnumerable<ViewModel.TenantViewModel>>(tenants));
+            return View(Mapper.Map<IEnumerable<DataModel.Tenant>, IEnumerable<ViewModel.Tenant>>(tenants));
         }
 
         // GET: /TenantManagement/Details/5
@@ -49,7 +49,7 @@ namespace Proto.Mvc.Mgmt.Controllers
             //var tenant = getTenantByIdHandler.Handle(new GetTenantByIdQuery { TenantId = (int)id });
             return tenant == null
                 ? (ActionResult)HttpNotFound()
-                : View(Mapper.Map<DataModel.Tenant, ViewModel.TenantViewModel>(tenant));
+                : View(Mapper.Map<DataModel.Tenant, ViewModel.Tenant>(tenant));
         }
 
         // GET: /TenantManagement/Create
@@ -65,11 +65,11 @@ namespace Proto.Mvc.Mgmt.Controllers
         // Example: public ActionResult Update([Bind(Include="ExampleProperty1,ExampleProperty2")] Model model)
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ViewModel.TenantViewModel tenantVm)
+        public ActionResult Create(ViewModel.Tenant tenantVm)
         {
             if (ModelState.IsValid)
             {
-                WriteRepository.Create(Mapper.Map<ViewModel.TenantViewModel, DataModel.Tenant>(tenantVm));
+                WriteRepository.Create(Mapper.Map<ViewModel.Tenant, DataModel.Tenant>(tenantVm));
                 return RedirectToAction("Index");
             }
 
@@ -85,7 +85,7 @@ namespace Proto.Mvc.Mgmt.Controllers
             var tenant = ReadRepository.GetById(id);
             return tenant == null
                 ? (ActionResult)HttpNotFound()
-                : View(Mapper.Map<DataModel.Tenant, ViewModel.TenantViewModel>(tenant));
+                : View(Mapper.Map<DataModel.Tenant, ViewModel.Tenant>(tenant));
         }
 
         // POST: /TenantManagement/Edit/5
@@ -98,13 +98,13 @@ namespace Proto.Mvc.Mgmt.Controllers
         public ActionResult Edit(
             //[Bind(Include = "TenantId, Name, PrimaryContactFirstName, PrimaryContactLastName, " + 
             //    "PrimaryContactPhone, Description, Email, OfficePhone, RowVersion")]
-            ViewModel.TenantViewModel tenantVm)
+            ViewModel.Tenant tenantVm)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var tenant = Mapper.Map<ViewModel.TenantViewModel, DataModel.Tenant>(tenantVm);
+                    var tenant = Mapper.Map<ViewModel.Tenant, DataModel.Tenant>(tenantVm);
                     tenant.LastModifiedBy = User.Identity.Name;
 
                     WriteRepository.Update(tenant);
@@ -228,7 +228,7 @@ namespace Proto.Mvc.Mgmt.Controllers
 
             return tenant == null
                 ? (ActionResult)HttpNotFound()
-                : View(Mapper.Map<DataModel.Tenant, ViewModel.TenantViewModel>(tenant));
+                : View(Mapper.Map<DataModel.Tenant, ViewModel.Tenant>(tenant));
         }
 
 
@@ -236,11 +236,11 @@ namespace Proto.Mvc.Mgmt.Controllers
         // POST: /TenantManagement/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(ViewModel.TenantViewModel tenantVm)
+        public ActionResult Delete(ViewModel.Tenant tenantVm)
         {
             try
             {
-                WriteRepository.Delete(Mapper.Map<ViewModel.TenantViewModel, DataModel.Tenant>(tenantVm));
+                WriteRepository.Delete(Mapper.Map<ViewModel.Tenant, DataModel.Tenant>(tenantVm));
                 return RedirectToAction("Index");
             }
             catch (DbUpdateConcurrencyException)
