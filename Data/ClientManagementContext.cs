@@ -45,6 +45,8 @@ namespace Data
             modelBuilder.Configurations.Add(new AddressConfig());
             modelBuilder.Configurations.Add(new ContactTypeConfig());
             modelBuilder.Configurations.Add(new ConnectionConfigurationConfig());
+
+            this.Configuration.LazyLoadingEnabled = false;
         }
     }
 
