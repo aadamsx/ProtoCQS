@@ -289,18 +289,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Proto.Data\Proto.Data.csproj">
-      <Project>{DE1A7072-744F-4306-BAA3-E95FBC1AC6E0}</Project>
-      <Name>Proto.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Proto.Domain\Proto.Domain.csproj">
-      <Project>{06307A67-DCF5-4E7E-9353-A5FE10E4D9C5}</Project>
-      <Name>Proto.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Proto.Model\Proto.Model.csproj">
-      <Project>{79C92AA3-8328-4E43-82C2-5A4C4B26C720}</Project>
-      <Name>Proto.Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Repository\Repository.csproj">
       <Project>{D69BBA16-BB4A-46F2-9D71-FDD71F74862B}</Project>
       <Name>Repository</Name>

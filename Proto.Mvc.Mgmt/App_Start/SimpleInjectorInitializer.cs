@@ -1,4 +1,4 @@
-using Proto.Domain;
+using Domain;
 using Repository;
 
 [assembly: WebActivator.PostApplicationStartMethod(typeof(Proto.Mvc.Mgmt.App_Start.SimpleInjectorInitializer), "Initialize")]

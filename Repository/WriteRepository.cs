@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using Data;
 using Proto.Data;
 
 namespace Repository
