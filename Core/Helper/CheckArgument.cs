@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Core.Extension;
 
-namespace Helper
+namespace Core.Helper
 {
     public class Check
     {
@@ -15,6 +16,7 @@ namespace Helper
             internal Argument()
             {
             }
+
 
             [DebuggerStepThrough]
             public static void IsNotEmpty(Guid argument, string argumentName)
@@ -212,6 +214,4 @@ namespace Helper
             }
         }
     }
-
-v
 }

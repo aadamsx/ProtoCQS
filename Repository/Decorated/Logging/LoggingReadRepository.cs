@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Helper;
+using Core.Helper;
 using Logger;
 
 namespace Repository.Decorated.Logging
@@ -15,7 +15,7 @@ namespace Repository.Decorated.Logging
 
         public override TEntity GetById(object id)
         {
-            Check.Argument.IsNotEmpty((string) id, "id");
+            Check.Argument.IsNotEmpty(id.ToString(), "id");
 
             Log.Info("Retrieving entity with id: {0}", id);
 

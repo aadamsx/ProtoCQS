@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
-using Extension;
-using Helper;
+using Core.Extension;
+using Core.Helper;
 using NLog;
 
 namespace Logger

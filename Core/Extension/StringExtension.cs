@@ -5,9 +5,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
-using Helper;
+using Core.Helper;
 
-namespace Extension
+namespace Core.Extension
 {
     public static class StringExtension
     {

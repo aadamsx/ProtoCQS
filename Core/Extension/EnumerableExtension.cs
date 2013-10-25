@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Extension
+namespace Core.Extension
 {
     public static class EnumerableExtension
     {

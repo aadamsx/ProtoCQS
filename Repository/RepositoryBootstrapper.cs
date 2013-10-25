@@ -19,8 +19,9 @@ namespace Repository
             {
                 throw new ArgumentNullException("container");
             }
+
             container.RegisterOpenGeneric(
-                typeof(IRepositoryQuery<>), 
+                typeof(IRepositoryQuery<>),
                 typeof(RepositoryQuery<>));
 
             container.RegisterOpenGeneric(
@@ -30,26 +31,37 @@ namespace Repository
                 typeof(IWriteRepository<>),
                 typeof(WriteRepository<>));
 
-            container.RegisterDecorator(
-                typeof(IReadRepository<>),
-                typeof(DecoratedReadRepository<>));
-            container.RegisterDecorator(
-                typeof(IWriteRepository<>),
-                typeof(DecoratedWriteRepository<>));
 
-            container.RegisterDecorator(
-                typeof(DecoratedReadRepository<>),
-                typeof(LoggingReadRepository<>));
-            container.RegisterDecorator(
-                typeof(DecoratedWriteRepository<>),
-                typeof(LoggingWriteRepository<>));
+            //container.RegisterDecorator(typeof(IReadRepository<>), typeof(LoggingReadRepository<>));
+            //container.RegisterDecorator(typeof(IWriteRepository<>), typeof(LoggingWriteRepository<>));
+            container.RegisterDecorator(typeof(IReadRepository<>), typeof(LoggingClientReadRepository));
+            container.RegisterDecorator(typeof(IWriteRepository<>), typeof(LoggingClientWriteRepository));
 
-            container.RegisterDecorator(
-                typeof(DecoratedReadRepository<>),
-                typeof(LoggingClientReadRepository<Tenant>));
-            container.RegisterDecorator(
-                typeof(DecoratedWriteRepository<>),
-                typeof(LoggingClientWriteRepository<>));
+            // First pass at wirting up DI failed:
+
+
+
+
+            //container.RegisterDecorator(
+            //    typeof(IReadRepository<>),
+            //    typeof(DecoratedReadRepository<>));
+            //container.RegisterDecorator(
+            //    typeof(IWriteRepository<>),
+            //    typeof(DecoratedWriteRepository<>));
+
+            //container.RegisterDecorator(
+            //    typeof(DecoratedReadRepository<>),
+            //    typeof(LoggingReadRepository<>));
+            //container.RegisterDecorator(
+            //    typeof(DecoratedWriteRepository<>),
+            //    typeof(LoggingWriteRepository<>));
+
+            //container.RegisterDecorator(
+            //    typeof(DecoratedReadRepository<>),
+            //    typeof(LoggingClientReadRepository<Tenant>));
+            //container.RegisterDecorator(
+            //    typeof(DecoratedWriteRepository<>),
+            //    typeof(LoggingClientWriteRepository<>));
         }
     }
 }

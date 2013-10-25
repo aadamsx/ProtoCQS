@@ -1,5 +1,5 @@
-﻿using DataModel;
-using Helper;
+﻿using Core.Helper;
+using DataModel;
 using Logger;
 
 namespace Repository.Decorated.Logging

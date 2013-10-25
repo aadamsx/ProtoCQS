@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace Helper
+namespace Core.Helper
 {
     public static class Constants
     {

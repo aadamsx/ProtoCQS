@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Core.Helper;
 using DataModel;
-using Helper;
 using Logger;
 
 namespace Repository.Decorated.Logging
@@ -16,9 +16,9 @@ namespace Repository.Decorated.Logging
 
         public override Tenant GetById(object id)
         {
-            Check.Argument.IsNotEmpty((string)id, "id");
+            Check.Argument.IsNotEmpty(id.ToString(), "id");
 
-            Log.Info("Retrieving tenants with id: {0}", id);
+            Log.Info("Retrieving tenant with id: {0}", id);
 
             var result = base.GetById(id);
 
@@ -72,17 +72,17 @@ namespace Repository.Decorated.Logging
 
         public override IEnumerable<Tenant> SqlQuery(string query, params object[] parameters)
         {
-            Log.Info("Retrieving tenants with query: {0}, {1}", query, parameters.ToString());
+            Log.Info("Retrieving tenants with sql query: {0}, {1}", query, parameters.ToString());
 
             var result = base.SqlQuery(query, parameters);
 
             if (result == null)
             {
-                Log.Warning("Did not find tenants with query: {0}, {1}", query, parameters.ToString());
+                Log.Warning("Did not find tenants with sql query: {0}, {1}", query, parameters.ToString());
             }
             else
             {
-                Log.Info("Tenants retrieved with query: {0}, {1}", query, parameters.ToString());
+                Log.Info("Tenants retrieved with sql query: {0}, {1}", query, parameters.ToString());
             }
 
             return result;

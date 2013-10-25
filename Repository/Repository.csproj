@@ -82,6 +82,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{87159E81-26FA-4EF0-851D-DA6C8D78E091}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{79C92AA3-8328-4E43-82C2-5A4C4B26C720}</Project>
       <Name>DataModel</Name>
@@ -89,10 +93,6 @@
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{DE1A7072-744F-4306-BAA3-E95FBC1AC6E0}</Project>
       <Name>Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Helper\Helper.csproj">
-      <Project>{9FABF5C4-FB7E-4783-80D3-3DD9D95178EC}</Project>
-      <Name>Helper</Name>
     </ProjectReference>
     <ProjectReference Include="..\Logger\Logging.csproj">
       <Project>{ED2D5C17-B46A-41F2-A1D0-B9B0650C0E21}</Project>
