@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>FluentLog4Net</id>
+    <version>0.5</version>
+    <title>FluentLog4Net</title>
+    <authors>awhatley</authors>
+    <owners>awhatley</owners>
+    <projectUrl>https://github.com/awhatley/fluent-log4net</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A fluent interface for configuring log4net</description>
+    <summary>A fluent interface for configuring log4net</summary>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <tags>fluent log4net logging</tags>
+    <dependencies>
+      <dependency id="log4net" version="1.2.10" />
+    </dependencies>
+  </metadata>
+</package>

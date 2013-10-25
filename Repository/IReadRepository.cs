@@ -21,8 +21,4 @@ namespace Repository
             int? pageSize = null);
 
     }
-
-    public interface IRepositoryQuery<T>
-    {
-    }
 }

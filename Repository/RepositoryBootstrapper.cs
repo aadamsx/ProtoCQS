@@ -1,4 +1,7 @@
 ﻿using System;
+using DataModel;
+using Repository.Decorated;
+using Repository.Decorated.Logging;
 using SimpleInjector;
 using SimpleInjector.Extensions;
 
@@ -16,10 +19,37 @@ namespace Repository
             {
                 throw new ArgumentNullException("container");
             }
-            container.RegisterOpenGeneric(typeof(IRepositoryQuery<>), typeof(RepositoryQuery<>));
-            container.RegisterOpenGeneric(typeof(IReadRepository<>), typeof(ReadRepository<>));
-            container.RegisterOpenGeneric(typeof(IWriteRepository<>), typeof(WriteRepository<>));
+            container.RegisterOpenGeneric(
+                typeof(IRepositoryQuery<>), 
+                typeof(RepositoryQuery<>));
 
+            container.RegisterOpenGeneric(
+                typeof(IReadRepository<>),
+                typeof(ReadRepository<>));
+            container.RegisterOpenGeneric(
+                typeof(IWriteRepository<>),
+                typeof(WriteRepository<>));
+
+            container.RegisterDecorator(
+                typeof(IReadRepository<>),
+                typeof(DecoratedReadRepository<>));
+            container.RegisterDecorator(
+                typeof(IWriteRepository<>),
+                typeof(DecoratedWriteRepository<>));
+
+            container.RegisterDecorator(
+                typeof(DecoratedReadRepository<>),
+                typeof(LoggingReadRepository<>));
+            container.RegisterDecorator(
+                typeof(DecoratedWriteRepository<>),
+                typeof(LoggingWriteRepository<>));
+
+            container.RegisterDecorator(
+                typeof(DecoratedReadRepository<>),
+                typeof(LoggingClientReadRepository<Tenant>));
+            container.RegisterDecorator(
+                typeof(DecoratedWriteRepository<>),
+                typeof(LoggingClientWriteRepository<>));
         }
     }
 }
