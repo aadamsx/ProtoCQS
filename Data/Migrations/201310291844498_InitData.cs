@@ -3,32 +3,10 @@ namespace Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class TraceLog : DbMigration
+    public partial class InitData : DbMigration
     {
         public override void Up()
         {
-            CreateTable(
-                "dbo.ConnectionConfiguration",
-                c => new
-                    {
-                        MachineName = c.String(nullable: false, maxLength: 128),
-                        Setting = c.String(nullable: false, maxLength: 128),
-                        Value = c.String(nullable: false, maxLength: 128),
-                        Type = c.String(),
-                        Provider = c.String(),
-                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
-                    })
-                .PrimaryKey(t => new { t.MachineName, t.Setting, t.Value });
-            
-            CreateTable(
-                "dbo.ContactType",
-                c => new
-                    {
-                        ContactTypeId = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, maxLength: 30),
-                    })
-                .PrimaryKey(t => t.ContactTypeId);
-            
             CreateTable(
                 "dbo.Tenant",
                 c => new
@@ -57,6 +35,28 @@ namespace Data.Migrations
                 .Index(t => t.ContactTypeId);
             
             CreateTable(
+                "dbo.ContactType",
+                c => new
+                    {
+                        ContactTypeId = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 30),
+                    })
+                .PrimaryKey(t => t.ContactTypeId);
+            
+            CreateTable(
+                "dbo.ConnectionConfiguration",
+                c => new
+                    {
+                        MachineName = c.String(nullable: false, maxLength: 128),
+                        Setting = c.String(nullable: false, maxLength: 128),
+                        Value = c.String(nullable: false, maxLength: 128),
+                        Type = c.String(),
+                        Provider = c.String(),
+                        RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                    })
+                .PrimaryKey(t => new { t.MachineName, t.Setting, t.Value });
+            
+            CreateTable(
                 "dbo.TraceLog",
                 c => new
                     {
@@ -74,9 +74,9 @@ namespace Data.Migrations
             DropForeignKey("dbo.Tenant", "ContactTypeId", "dbo.ContactType");
             DropIndex("dbo.Tenant", new[] { "ContactTypeId" });
             DropTable("dbo.TraceLog");
-            DropTable("dbo.Tenant");
-            DropTable("dbo.ContactType");
             DropTable("dbo.ConnectionConfiguration");
+            DropTable("dbo.ContactType");
+            DropTable("dbo.Tenant");
         }
     }
 }

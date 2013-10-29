@@ -84,77 +84,77 @@ namespace Data.Migrations
                 }
             );
 
-            context.Set<ConnectionConfiguration>().AddOrUpdate(
-                _ => _.Value,
-                new ConnectionConfiguration
-                {
-                    MachineName = "DevWeb",
-                    Setting = "ClientManagementContext",
-                    Type = "ConnectionString",
-                    Value = "Data Source=(localdb)\v11.0;Initial Catalog=ClientManagementContext;Integrated Security=True",
-                    Provider = "System.Data.SqlClient"
-                }
-            );
+            //context.Set<ConnectionConfiguration>().AddOrUpdate(
+            //    _ => _.Value,
+            //    new ConnectionConfiguration
+            //    {
+            //        MachineName = "DevWeb",
+            //        Setting = "ClientManagementContext",
+            //        Type = "ConnectionString",
+            //        Value = "Data Source=(localdb)\v11.0;Initial Catalog=ClientManagementContext;Integrated Security=True",
+            //        Provider = "System.Data.SqlClient"
+            //    }
+            //);
 
-            context.Set<ConnectionConfiguration>().AddOrUpdate(
-                _ => _.Value,
-                new ConnectionConfiguration
-                {
-                    MachineName = "TestWeb",
-                    Setting = "ClientManagementContext",
-                    Type = "ConnectionString",
-                    Value = "Data Source=(localdb)\v11.0;Initial Catalog=ClientManagementContext;Integrated Security=True",
-                    Provider = "System.Data.SqlClient"
-                }
-            );
+            //context.Set<ConnectionConfiguration>().AddOrUpdate(
+            //    _ => _.Value,
+            //    new ConnectionConfiguration
+            //    {
+            //        MachineName = "TestWeb",
+            //        Setting = "ClientManagementContext",
+            //        Type = "ConnectionString",
+            //        Value = "Data Source=(localdb)\v11.0;Initial Catalog=ClientManagementContext;Integrated Security=True",
+            //        Provider = "System.Data.SqlClient"
+            //    }
+            //);
 
-            context.Set<ConnectionConfiguration>().AddOrUpdate(
-                _ => _.Value,
-                new ConnectionConfiguration
-                {
-                    MachineName = "ProdWeb",
-                    Setting = "ClientManagementContext",
-                    Type = "ConnectionString",
-                    Value = "Data Source=(localdb)\v11.0;Initial Catalog=ClientManagementContext;Integrated Security=True",
-                    Provider = "System.Data.SqlClient"
-                }
-            );
+            //context.Set<ConnectionConfiguration>().AddOrUpdate(
+            //    _ => _.Value,
+            //    new ConnectionConfiguration
+            //    {
+            //        MachineName = "ProdWeb",
+            //        Setting = "ClientManagementContext",
+            //        Type = "ConnectionString",
+            //        Value = "Data Source=(localdb)\v11.0;Initial Catalog=ClientManagementContext;Integrated Security=True",
+            //        Provider = "System.Data.SqlClient"
+            //    }
+            //);
 
-            context.Set<ConnectionConfiguration>().AddOrUpdate(
-                _ => _.Value,
-                new ConnectionConfiguration
-                {
-                    MachineName = "DevWeb",
-                    Setting = "ClientManagementContextEntities",
-                    Type = "ConnectionString",
-                    Value = "test", // metadata=res://*/Query.ClientManagementContextQueryEntities.csdl|res://*/Query.ClientManagementContextQueryEntities.ssdl|res://*/Query.ClientManagementContextQueryEntities.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(localdb)\v11.0;initial catalog=ClientManagementContext;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;
-                    Provider = "System.Data.EntityClient"
-                }
-            );
+            //context.Set<ConnectionConfiguration>().AddOrUpdate(
+            //    _ => _.Value,
+            //    new ConnectionConfiguration
+            //    {
+            //        MachineName = "DevWeb",
+            //        Setting = "ClientManagementContextEntities",
+            //        Type = "ConnectionString",
+            //        Value = "test", // metadata=res://*/Query.ClientManagementContextQueryEntities.csdl|res://*/Query.ClientManagementContextQueryEntities.ssdl|res://*/Query.ClientManagementContextQueryEntities.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(localdb)\v11.0;initial catalog=ClientManagementContext;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;
+            //        Provider = "System.Data.EntityClient"
+            //    }
+            //);
 
-            context.Set<ConnectionConfiguration>().AddOrUpdate(
-                _ => _.Value,
-                new ConnectionConfiguration
-                {
-                    MachineName = "TestWeb",
-                    Setting = "ClientManagementContextEntities",
-                    Type = "ConnectionString",
-                    Value = "test2", // "metadata=res://*/Query.ClientManagementContextQueryEntities.csdl|res://*/Query.ClientManagementContextQueryEntities.ssdl|res://*/Query.ClientManagementContextQueryEntities.msl", // "metadata=res://*/Query.ClientManagementContextQueryEntities.csdl|res://*/Query.ClientManagementContextQueryEntities.ssdl|res://*/Query.ClientManagementContextQueryEntities.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(localdb)\v11.0;initial catalog=ClientManagementContext;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;",
-                    Provider = "System.Data.EntityClient"
-                }
-            );
+            //context.Set<ConnectionConfiguration>().AddOrUpdate(
+            //    _ => _.Value,
+            //    new ConnectionConfiguration
+            //    {
+            //        MachineName = "TestWeb",
+            //        Setting = "ClientManagementContextEntities",
+            //        Type = "ConnectionString",
+            //        Value = "test2", // "metadata=res://*/Query.ClientManagementContextQueryEntities.csdl|res://*/Query.ClientManagementContextQueryEntities.ssdl|res://*/Query.ClientManagementContextQueryEntities.msl", // "metadata=res://*/Query.ClientManagementContextQueryEntities.csdl|res://*/Query.ClientManagementContextQueryEntities.ssdl|res://*/Query.ClientManagementContextQueryEntities.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(localdb)\v11.0;initial catalog=ClientManagementContext;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;",
+            //        Provider = "System.Data.EntityClient"
+            //    }
+            //);
 
-            context.Set<ConnectionConfiguration>().AddOrUpdate(
-                _ => _.Value,
-                new ConnectionConfiguration
-                {
-                    MachineName = "ProdWeb",
-                    Setting = "ClientManagementContextEntities",
-                    Type = "ConnectionString",
-                    Value = "connectiontest3", //"metadata=res://*/Query.ClientManagementContextQueryEntities.csdl|res://*/Query.ClientManagementContextQueryEntities.ssdl|res://*/Query.ClientManagementContextQueryEntities.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(localdb)\v11.0;initial catalog=ClientManagementContext;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;",
-                    Provider = "System.Data.EntityClient"
-                }
-            );  
+            //context.Set<ConnectionConfiguration>().AddOrUpdate(
+            //    _ => _.Value,
+            //    new ConnectionConfiguration
+            //    {
+            //        MachineName = "ProdWeb",
+            //        Setting = "ClientManagementContextEntities",
+            //        Type = "ConnectionString",
+            //        Value = "connectiontest3", //"metadata=res://*/Query.ClientManagementContextQueryEntities.csdl|res://*/Query.ClientManagementContextQueryEntities.ssdl|res://*/Query.ClientManagementContextQueryEntities.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(localdb)\v11.0;initial catalog=ClientManagementContext;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;",
+            //        Provider = "System.Data.EntityClient"
+            //    }
+            //);  
         }
     }
 }

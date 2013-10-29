@@ -1,5 +1,4 @@
-﻿using Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 
 // Between these two classes, the MVC framework has provided the basics for generating and consuming the complete Identity Account database.
 // However, the basic classes are extensible, so we can tailor things to suit our needs.

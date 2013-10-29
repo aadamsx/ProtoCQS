@@ -1,9 +1,9 @@
-namespace Identity.Migrations
+namespace IdentityUserData.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class IdentityInit : DbMigration
+    public partial class IdentitInit : DbMigration
     {
         public override void Up()
         {
@@ -24,6 +24,9 @@ namespace Identity.Migrations
                         UserName = c.String(),
                         PasswordHash = c.String(),
                         SecurityStamp = c.String(),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        Email = c.String(),
                         Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id);

@@ -54,13 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201310290304021_IdentityInit.cs" />
-    <Compile Include="Migrations\201310290304021_IdentityInit.Designer.cs">
-      <DependentUpon>201310290304021_IdentityInit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201310290401494_ApplicationUser.cs" />
-    <Compile Include="Migrations\201310290401494_ApplicationUser.Designer.cs">
-      <DependentUpon>201310290401494_ApplicationUser.cs</DependentUpon>
+    <Compile Include="Migrations\201310291841558_IdentitInit.cs" />
+    <Compile Include="Migrations\201310291841558_IdentitInit.Designer.cs">
+      <DependentUpon>201310291841558_IdentitInit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="RegisterViewModel.cs" />
@@ -76,11 +72,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201310290304021_IdentityInit.resx">
-      <DependentUpon>201310290304021_IdentityInit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201310290401494_ApplicationUser.resx">
-      <DependentUpon>201310290401494_ApplicationUser.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201310291841558_IdentitInit.resx">
+      <DependentUpon>201310291841558_IdentitInit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

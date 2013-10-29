@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using Data;
-using Proto.Data;
 
 namespace Repository
 {
@@ -13,7 +10,7 @@ namespace Repository
     /// Add() operations, then don't use this Generic Repo, extend this or use a Command Handler
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public partial class WriteRepository<TEntity> : IWriteRepository<TEntity> where TEntity : class
+    public class WriteRepository<TEntity> : IWriteRepository<TEntity> where TEntity : class
     {
         private readonly Guid instanceId;
         //private DbSet<TEntity> dbSet;
