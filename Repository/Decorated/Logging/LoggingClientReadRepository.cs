@@ -6,7 +6,7 @@ using Core.Helper;
 using DataModel;
 using Logger;
 
-namespace Repository.Decorated.Logging
+namespace Repository.Decorated.Logging_Depreciated
 {
     public class LoggingClientReadRepository
         : DecoratedReadRepository<Tenant>

@@ -57,5 +57,7 @@ namespace Repository.Decorated
         {
             return _readRepository.Get(filter, orderBy, includeProperties, page, pageSize);
         }
+
+        
     }
 }

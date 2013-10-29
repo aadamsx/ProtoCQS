@@ -37,6 +37,7 @@
     <Compile Include="Address.cs" />
     <Compile Include="ContactType.cs" />
     <Compile Include="County.cs" />
+    <Compile Include="TraceLog.cs" />
     <Compile Include="StateProvince.cs" />
     <Compile Include="ConnectionConfiguration.cs" />
     <Compile Include="Tenant.cs" />

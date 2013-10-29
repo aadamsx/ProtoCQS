@@ -4,7 +4,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using Data;
-using Proto.Data;
 
 namespace Repository
 {
@@ -28,40 +27,40 @@ namespace Repository
         : IReadRepository<TEntity> where TEntity : class
     {
 
-        private readonly Guid instanceId;
-        private ClientManagementContext context;
+        private readonly Guid _instanceId;
+        private ClientManagementContext _context;
 
         public ReadRepository(ClientManagementContext context)
         {
-            this.context = context;
+            _context = context;
             //dbSet = this.context.Set<TEntity>();
-            instanceId = Guid.NewGuid();
+            _instanceId = Guid.NewGuid();
 
             // set these properties for faster performance
-            this.context.Configuration.AutoDetectChangesEnabled = false;
-            this.context.Configuration.ValidateOnSaveEnabled = false;
+            _context.Configuration.AutoDetectChangesEnabled = false;
+            _context.Configuration.ValidateOnSaveEnabled = false;
         }
 
         public Guid InstanceId
         {
-            get { return instanceId; }
+            get { return _instanceId; }
         }
 
         public TEntity GetById(object id)
         {
-            return context.Set<TEntity>().Find(id);
+            return _context.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> GetAll()
         {
             // As no tracking prevents entities returned from being cached in the dbcontext
-            return context.Set<TEntity>().AsNoTracking().AsEnumerable();
+            return _context.Set<TEntity>().AsNoTracking().AsEnumerable();
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
             // As no tracking prevents entities returned from being cached in the dbcontext
-            return context.Set<TEntity>().Where(predicate).AsNoTracking().AsEnumerable();
+            return _context.Set<TEntity>().Where(predicate).AsNoTracking().AsEnumerable();
         }
 
         public IRepositoryQuery<TEntity> Query()
@@ -75,7 +74,7 @@ namespace Repository
             List<Expression<Func<TEntity, object>>> includeProperties = null, int? page = null,
             int? pageSize = null)
         {
-            IQueryable<TEntity> query = context.Set<TEntity>();
+            IQueryable<TEntity> query = _context.Set<TEntity>();
 
             if (includeProperties != null)
                 includeProperties.ForEach(i => query = query.Include(i));
@@ -99,7 +98,7 @@ namespace Repository
 
         public IEnumerable<TEntity> SqlQuery(string query, params object[] parameters)
         {
-            return context.Set<TEntity>().SqlQuery(query, parameters).AsNoTracking().AsEnumerable();
+            return _context.Set<TEntity>().SqlQuery(query, parameters).AsNoTracking().AsEnumerable();
         }
     }
 }

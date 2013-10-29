@@ -8,6 +8,7 @@ namespace Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "ClientManagement";
         }
 
         protected override void Seed(ClientManagementContext context)

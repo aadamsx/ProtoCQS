@@ -2,7 +2,7 @@
 using DataModel;
 using Logger;
 
-namespace Repository.Decorated.Logging
+namespace Repository.Decorated.Logging_Depreciated
 {
     public class LoggingClientWriteRepository 
         : DecoratedWriteRepository<Tenant> 

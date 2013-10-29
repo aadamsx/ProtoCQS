@@ -34,21 +34,27 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.0.0-rc1\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.0.0-rc1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="SimpleInjector">
-      <HintPath>..\packages\SimpleInjector.2.3.5\lib\net40-client\SimpleInjector.dll</HintPath>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.1.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=2.3.6.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SimpleInjector.2.3.6\lib\net40-client\SimpleInjector.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ConfigurationConfig.cs" />
+    <Compile Include="Configuration\TraceLogConfig.cs" />
     <Compile Include="DomainLayerBootstrapper.cs" />
     <Compile Include="Configuration\AddressConfig.cs" />
     <Compile Include="Configuration\ContactTypeConfig.cs" />
@@ -59,7 +65,6 @@
     <Compile Include="Infrastructure\IDbContext.cs" />
     <Compile Include="Infrastructure\Infrastructure.cs" />
     <Compile Include="Infrastructure\NLogCommandInterceptor.cs" />
-    <Compile Include="Infrastructure\temp.cs" />
     <Compile Include="Infrastructure\UnitOfWorkFactory.cs" />
     <Compile Include="Migrations\201309241551022_Init.cs" />
     <Compile Include="Migrations\201309241551022_Init.Designer.cs">
@@ -81,11 +86,19 @@
     <Compile Include="Migrations\201310152318195_UpdateConnectionConfig.Designer.cs">
       <DependentUpon>201310152318195_UpdateConnectionConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201310281900472_TraceLog.cs" />
+    <Compile Include="Migrations\201310281900472_TraceLog.Designer.cs">
+      <DependentUpon>201310281900472_TraceLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="NLog.config" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201310152318195_UpdateConnectionConfig.resx">
       <DependentUpon>201310152318195_UpdateConnectionConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310281900472_TraceLog.resx">
+      <DependentUpon>201310281900472_TraceLog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

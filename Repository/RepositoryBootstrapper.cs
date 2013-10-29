@@ -32,10 +32,10 @@ namespace Repository
                 typeof(WriteRepository<>));
 
 
-            //container.RegisterDecorator(typeof(IReadRepository<>), typeof(LoggingReadRepository<>));
-            //container.RegisterDecorator(typeof(IWriteRepository<>), typeof(LoggingWriteRepository<>));
-            container.RegisterDecorator(typeof(IReadRepository<>), typeof(LoggingClientReadRepository));
-            container.RegisterDecorator(typeof(IWriteRepository<>), typeof(LoggingClientWriteRepository));
+            container.RegisterDecorator(typeof(IReadRepository<>), typeof(LoggingReadRepository<>));
+            container.RegisterDecorator(typeof(IWriteRepository<>), typeof(LoggingWriteRepository<>));
+            //container.RegisterDecorator(typeof(IReadRepository<>), typeof(LoggingClientReadRepository));
+            //container.RegisterDecorator(typeof(IWriteRepository<>), typeof(LoggingClientWriteRepository));
 
             // First pass at wirting up DI failed:
 

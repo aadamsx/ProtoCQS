@@ -11,19 +11,19 @@ namespace Domain.CommandHandlers.Tenant
             db = context;
         }
 
-        void ICommandHandler<DeleteTenantCommand>.Handle(DeleteTenantCommand command)
+        public void Handle(DeleteTenantCommand command)
         {
+            //Note: temp removal
+            //var tenant = db.Tenants.Find(command.TenantId);
+            //if (tenant == null)
+            //{
+            //    // convention, 0 = no tenant found
+            //    command.TenantId = 0;
+            //    return;
+            //}
 
-            var tenant = db.Tenants.Find(command.TenantId);
-            if (tenant == null)
-            {
-                // convention, 0 = no tenant found
-                command.TenantId = 0;
-                return;
-            }
-
-            db.Tenants.Remove(tenant);
-            db.SaveChanges();
+            //db.Tenants.Remove(tenant);
+            //db.SaveChanges();
         }
     }
 }

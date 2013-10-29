@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure.Interception;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Data.Configuration;
+using Data.Infrastructure;
 using DataModel;
 
 namespace Data
@@ -11,10 +13,12 @@ namespace Data
         private readonly Guid _instanceId;
 
         public ClientManagementContext()
-            : base("Name=ClientManagementContext")
+            : base("Name=ClientManagement")
         {
             //Configuration.LazyLoadingEnabled = true;
             _instanceId = Guid.NewGuid();
+
+            DbInterception.Add(new NLogCommandInterceptor());
         }
 
         //public ClientManagementContext(string connectionstring)
@@ -29,9 +33,10 @@ namespace Data
             get { return _instanceId; }
         }
 
-        public DbSet<Tenant> Tenants { get; set; }
-        public DbSet<ContactType> ContactTypes { get; set; }
-        public DbSet<ConnectionConfiguration> ConnectionConfigurations { get; set; } 
+        //public DbSet<Tenant> Tenants { get; set; }
+        //public DbSet<ContactType> ContactTypes { get; set; }
+        //public DbSet<ConnectionConfiguration> ConnectionConfigurations { get; set; } 
+        //public DbSet<TraceLog> TraceLogs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -45,6 +50,7 @@ namespace Data
             modelBuilder.Configurations.Add(new AddressConfig());
             modelBuilder.Configurations.Add(new ContactTypeConfig());
             modelBuilder.Configurations.Add(new ConnectionConfigurationConfig());
+            modelBuilder.Configurations.Add(new TraceLogConfig());
 
             this.Configuration.LazyLoadingEnabled = false;
         }

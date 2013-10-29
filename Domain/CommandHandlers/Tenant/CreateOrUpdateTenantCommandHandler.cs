@@ -16,7 +16,7 @@ namespace Domain.CommandHandlers.Tenant
             db = context;
         }
 
-        void ICommandHandler<CreateOrUpdateTenantCommand>.Handle(CreateOrUpdateTenantCommand command)
+        public void Handle(CreateOrUpdateTenantCommand command)
         {
             var tenant = new DataModel.Tenant
             {
@@ -78,7 +78,9 @@ namespace Domain.CommandHandlers.Tenant
                 //db.Entry(tenant).State = EntityState.Added;
 
                 // ... should I add like this?  what's the difference?
-                db.Tenants.Add(tenant);
+                
+                //Note: Temp removal
+                //db.Tenants.Add(tenant);
             }
             else
             {
