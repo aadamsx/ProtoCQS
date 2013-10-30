@@ -1,0 +1,137 @@
+﻿@model IEnumerable<ViewModel.Tenant>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <!-- I'm not sure I want the type on display in the main grid page
+        <th>
+            @Html.DisplayNameFor(model => model.Type.Name)
+        </th>
+        -->
+        <th>
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrimaryContactFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrimaryContactLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrimaryContactPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OfficePhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zip)
+        </th>
+        <!-- These fields are questionable as to if they belong on this display
+        <th>
+            @Html.DisplayNameFor(model => model.RowGuid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RowVersion)
+        </th>
+        -->
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <!-- here too I removed this
+        <td>
+            @Html.DisplayFor(modelItem => item.Type.Name)
+        </td>
+        -->
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrimaryContactFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrimaryContactLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrimaryContactPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OfficePhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zip)
+        </td>
+        <!-- Removed these too
+        <td>
+            @Html.DisplayFor(modelItem => item.RowGuid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RowVersion)
+        </td>
+        -->
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TenantId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TenantId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TenantId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -3,7 +3,7 @@ using DataModel;
 
 namespace Data.Configuration
 {
-    class ContactTypeConfig : EntityTypeConfiguration<ContactType>
+    public class ContactTypeConfig : EntityTypeConfiguration<ContactType>
     {
         public ContactTypeConfig()
         {

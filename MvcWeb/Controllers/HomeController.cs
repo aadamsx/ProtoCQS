@@ -9,6 +9,8 @@ namespace MvcWeb.Controllers
 {
     public class HomeController : Controller
     {
+        // The AllowAnonymous attribute enables you to white-list the methods you want to opt out of authorization. 
+        [AllowAnonymous]
         public ActionResult Index()
         {
             Trace.WriteLine("it's me");

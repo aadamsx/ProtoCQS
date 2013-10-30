@@ -54,6 +54,10 @@ namespace Data
 
             this.Configuration.LazyLoadingEnabled = false;
         }
+
+        public System.Data.Entity.DbSet<DataModel.Tenant> Tenants { get; set; }
+
+        public System.Data.Entity.DbSet<DataModel.ContactType> ContactTypes { get; set; }
     }
 
     public interface IDbContext
