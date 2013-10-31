@@ -307,13 +307,16 @@ namespace MvcWeb.Controllers
             }
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        // Originally, the DbContext was newed up in this controller.  And the DbContext does not clean up after itself, so I'm guessing
+        // this Disposed helped with that...  S.I. is handling the new of the DbContext, so I'm going to comment this out until I see
+        // that this is an issue somehow.
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

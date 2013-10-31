@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using ModelMap;
 using MvcWeb.App_Start;
 
 namespace MvcWeb
@@ -14,6 +15,7 @@ namespace MvcWeb
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             SimpleInjectorInitializer.Initialize();
+            AutoMapperConfiguration.Configure();
         }
     }
 }

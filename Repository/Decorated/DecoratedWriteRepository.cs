@@ -6,12 +6,13 @@ namespace Repository.Decorated
     public abstract class DecoratedWriteRepository<TEntity> : IWriteRepository<TEntity> where TEntity : class
     {
         private readonly IWriteRepository<TEntity> _writeRepository;
-
+        private readonly Guid _instanceId;
         protected DecoratedWriteRepository(IWriteRepository<TEntity> writeRepository)
         {
             if (writeRepository == null) throw new ArgumentNullException("writeRepository");
 
             _writeRepository = writeRepository;
+            _instanceId = Guid.NewGuid();
         }
 
         [DebuggerStepThrough]

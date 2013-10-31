@@ -125,23 +125,23 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.RowGuid, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.RowGuid)
                 @Html.ValidationMessageFor(model => model.RowGuid)
             </div>
-        </div>
+        </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.LastModifiedBy, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.LastModifiedBy)
                 @Html.ValidationMessageFor(model => model.LastModifiedBy)
             </div>
-        </div>
+        </div>*@
 
-        <!-- I commented this out because I don't think the RowVersion should be displayed.
+         @*I commented this out because I don't think the RowVersion should be displayed.
             What I think should happen is the RowGuid should be hiddend instead.
             <div class="form-group">
                 @Html.LabelFor(model => model.RowVersion, new { @class = "control-label col-md-2" })
@@ -149,15 +149,16 @@
                     @Html.EditorFor(model => model.RowVersion)
                     @Html.ValidationMessageFor(model => model.RowVersion)
                 </div>
-            </div>
-        -->
+            </div>*@
+        
 
         <!-- In the other Tenant Edit.cshtml file, I didn't actually have the
         contact type id on display, instead it is hiddend.  Need to test this. -->
         <div class="form-group">
             @Html.LabelFor(model => model.ContactTypeId, "ContactTypeId", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ContactTypeId", String.Empty)
+                @*@Html.DropDownList("ContactTypeId", String.Empty)*@
+                @Html.DropDownListFor(x => x.ContactTypeId, new SelectList(Model.Type.Name, "Value", "Text"), "-- Select Type --")
                 @Html.ValidationMessageFor(model => model.ContactTypeId)
             </div>
         </div>

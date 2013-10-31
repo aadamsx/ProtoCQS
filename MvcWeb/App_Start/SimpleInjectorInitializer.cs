@@ -1,3 +1,4 @@
+using Data;
 using Repository;
 
 [assembly: WebActivator.PostApplicationStartMethod(typeof(MvcWeb.App_Start.SimpleInjectorInitializer), "Initialize")]
@@ -31,7 +32,10 @@ namespace MvcWeb.App_Start
      
         private static void InitializeContainer(Container container)
         {
+            //DataBoostrapper.Bootstrap(container);
+            MvcBoostrapper.Bootstrap(container);
             RepositoryBoostrapper.Bootstrap(container);
+
 
             // For instance:
             // container.Register<IUserRepository, SqlUserRepository>();

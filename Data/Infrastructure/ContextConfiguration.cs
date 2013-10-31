@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Infrastructure.Interception;
 using System.Data.Entity.SqlServer;
 using System.Runtime.Remoting.Messaging;
 
@@ -30,28 +31,30 @@ namespace Data.Infrastructure
      http://msdn.microsoft.com/en-us/data/jj680699.aspx
      */
 
-    public class ContextConfiguration : DbConfiguration
-    {
-        public ContextConfiguration()
-        {
-            this.SetExecutionStrategy("System.Data.SqlClient", () => SuspendExecutionStrategy
-              ? (IDbExecutionStrategy)new DefaultExecutionStrategy()
-              : new SqlAzureExecutionStrategy(1, TimeSpan.FromSeconds(30)));
+    //public class ContextConfiguration : DbConfiguration, IContextConfiguration
+    //{
+    //    public ContextConfiguration()
+    //    {
+    //        this.SetExecutionStrategy("System.Data.SqlClient", () => SuspendExecutionStrategy
+    //          ? (IDbExecutionStrategy)new DefaultExecutionStrategy()
+    //          : new SqlAzureExecutionStrategy(1, TimeSpan.FromSeconds(30)));
 
-            // registered with EF using the DbInterception class
-            //Interception.AddInterceptor(new NLogCommandInterceptor());
-        }
+    //        // registered with EF using the DbInterception class
+    //        //Interception.AddInterceptor(new NLogCommandInterceptor());
+    //        DbInterception.Add(new NLogCommandInterceptor());
 
-        public static bool SuspendExecutionStrategy
-        {
-            get
-            {
-                return (bool?)CallContext.LogicalGetData("SuspendExecutionStrategy") ?? false;
-            }
-            set
-            {
-                CallContext.LogicalSetData("SuspendExecutionStrategy", value);
-            }
-        }
-    }
+    //    }
+
+    //    public static bool SuspendExecutionStrategy
+    //    {
+    //        get
+    //        {
+    //            return (bool?)CallContext.LogicalGetData("SuspendExecutionStrategy") ?? false;
+    //        }
+    //        set
+    //        {
+    //            CallContext.LogicalSetData("SuspendExecutionStrategy", value);
+    //        }
+    //    }
+    //}
 }

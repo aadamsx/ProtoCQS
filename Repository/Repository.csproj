@@ -68,8 +68,10 @@
     <Compile Include="Decorated\Logging\LoggingReadRepository.cs" />
     <Compile Include="Decorated\Logging\LoggingClientWriteRepository.cs" />
     <Compile Include="Decorated\Logging\LoggingWriteRepository.cs" />
+    <Compile Include="Services\TenantServices.cs" />
     <Compile Include="IReadRepository.cs" />
     <Compile Include="IRepositoryQuery.cs" />
+    <Compile Include="Extension\ITenantReadRepository.cs" />
     <Compile Include="IWriteRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadRepository.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Repository.cs" />
     <Compile Include="RepositoryBootstrapper.cs" />
     <Compile Include="RepositoryQuery.cs" />
+    <Compile Include="Extension\TenantReadRepository.cs" />
     <Compile Include="WriteRepository.cs" />
   </ItemGroup>
   <ItemGroup>

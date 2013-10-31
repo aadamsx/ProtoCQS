@@ -8,6 +8,15 @@ namespace Data.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.ContactType",
+                c => new
+                    {
+                        ContactTypeId = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 30),
+                    })
+                .PrimaryKey(t => t.ContactTypeId);
+            
+            CreateTable(
                 "dbo.Tenant",
                 c => new
                     {
@@ -33,15 +42,6 @@ namespace Data.Migrations
                 .PrimaryKey(t => t.TenantId)
                 .ForeignKey("dbo.ContactType", t => t.ContactTypeId, cascadeDelete: true)
                 .Index(t => t.ContactTypeId);
-            
-            CreateTable(
-                "dbo.ContactType",
-                c => new
-                    {
-                        ContactTypeId = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, maxLength: 30),
-                    })
-                .PrimaryKey(t => t.ContactTypeId);
             
             CreateTable(
                 "dbo.ConnectionConfiguration",
@@ -75,8 +75,8 @@ namespace Data.Migrations
             DropIndex("dbo.Tenant", new[] { "ContactTypeId" });
             DropTable("dbo.TraceLog");
             DropTable("dbo.ConnectionConfiguration");
-            DropTable("dbo.ContactType");
             DropTable("dbo.Tenant");
+            DropTable("dbo.ContactType");
         }
     }
 }

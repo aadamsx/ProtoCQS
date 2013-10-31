@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Data;
 
 namespace Repository
 {
@@ -20,5 +21,6 @@ namespace Repository
             int? page = null,
             int? pageSize = null);
 
+        //ClientManagementContext Context { get; }
     }
 }

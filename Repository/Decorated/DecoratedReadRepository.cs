@@ -10,10 +10,12 @@ namespace Repository.Decorated
         : IReadRepository<TEntity> where TEntity : class
     {
         private readonly IReadRepository<TEntity> _readRepository;
-
+        protected readonly Guid InstanceId;
         protected DecoratedReadRepository(IReadRepository<TEntity> readRepository)
         {
+            if (readRepository == null) throw new ArgumentNullException("readRepository");
             _readRepository = readRepository;
+            InstanceId = Guid.NewGuid();
         }
 
         [DebuggerStepThrough]

@@ -10,13 +10,13 @@ namespace Data
 {
     public class ClientManagementContext : DbContext, IDbContext
     {
-        private readonly Guid _instanceId;
+        //private readonly Guid _instanceId;
 
         public ClientManagementContext()
             : base("Name=ClientManagement")
         {
-            //Configuration.LazyLoadingEnabled = true;
-            _instanceId = Guid.NewGuid();
+            Configuration.LazyLoadingEnabled = false;
+            //_instanceId = Guid.NewGuid();
 
             DbInterception.Add(new NLogCommandInterceptor());
         }
@@ -28,15 +28,19 @@ namespace Data
         //    _instanceId = Guid.NewGuid();
         //}
 
-        public Guid InstanceId
-        {
-            get { return _instanceId; }
-        }
+        //public Guid InstanceId
+        //{
+        //    get { return _instanceId; }
+        //}
 
         //public DbSet<Tenant> Tenants { get; set; }
         //public DbSet<ContactType> ContactTypes { get; set; }
         //public DbSet<ConnectionConfiguration> ConnectionConfigurations { get; set; } 
         //public DbSet<TraceLog> TraceLogs { get; set; }
+
+
+        //public DbSet<Tenant> Tenants { get; set; }
+        //public DbSet<ContactType> ContactTypes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -52,15 +56,8 @@ namespace Data
             modelBuilder.Configurations.Add(new ConnectionConfigurationConfig());
             modelBuilder.Configurations.Add(new TraceLogConfig());
 
-            this.Configuration.LazyLoadingEnabled = false;
+            //Configuration.LazyLoadingEnabled = false;
         }
 
-        public System.Data.Entity.DbSet<DataModel.Tenant> Tenants { get; set; }
-
-        public System.Data.Entity.DbSet<DataModel.ContactType> ContactTypes { get; set; }
-    }
-
-    public interface IDbContext
-    {
     }
 }

@@ -21,8 +21,9 @@ namespace Repository.Decorated.Logging
 
             Type t = typeof(TEntity);
             var name = t.Name.ToString(CultureInfo.InvariantCulture);
+            var pid = base.InstanceId;
 
-            Log.Info("Retrieving {0} with id: {1}", name, id);
+            Log.Info("Retrieving {0} with id: {1}, pid: {2}", name, id, pid);
 
             var result = base.GetById(id);
 
@@ -42,8 +43,9 @@ namespace Repository.Decorated.Logging
         {
             Type t = typeof (TEntity);
             var name = t.Name.ToString(CultureInfo.InvariantCulture);
+            var pid = base.InstanceId;
 
-            Log.Info("Retrieving all {0}s", name);
+            Log.Info("Retrieving all {0}s, pid: {1}", name, pid);
 
             var result = base.GetAll();
 

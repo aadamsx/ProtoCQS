@@ -11,11 +11,10 @@
 </p>
 <table class="table">
     <tr>
-        <!-- I'm not sure I want the type on display in the main grid page
+        @*I'm not sure I want the type on display in the main grid page
         <th>
-            @Html.DisplayNameFor(model => model.Type.Name)
-        </th>
-        -->
+            @Html.DisplayNameFor(model => model.Name.Type.Name)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.AccountNumber)
         </th>
@@ -25,6 +24,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Active)
         </th>
+        @*
         <th>
             @Html.DisplayNameFor(model => model.PrimaryContactFirstName)
         </th>
@@ -33,13 +33,15 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PrimaryContactPhone)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
+        @* I have questions as to if these should be displayed on the index page
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
+
         <th>
             @Html.DisplayNameFor(model => model.OfficePhone)
         </th>
@@ -55,7 +57,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Zip)
         </th>
-        <!-- These fields are questionable as to if they belong on this display
         <th>
             @Html.DisplayNameFor(model => model.RowGuid)
         </th>
@@ -64,18 +65,16 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RowVersion)
-        </th>
-        -->
+        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <!-- here too I removed this
+        @*here too I removed this
         <td>
             @Html.DisplayFor(modelItem => item.Type.Name)
-        </td>
-        -->
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.AccountNumber)
         </td>
@@ -85,6 +84,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Active)
         </td>
+        @*
         <td>
             @Html.DisplayFor(modelItem => item.PrimaryContactFirstName)
         </td>
@@ -93,10 +93,11 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PrimaryContactPhone)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
+        @* I have questions as to if these should be displayed on the index page
         <td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>
@@ -115,7 +116,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.Zip)
         </td>
-        <!-- Removed these too
         <td>
             @Html.DisplayFor(modelItem => item.RowGuid)
         </td>
@@ -124,8 +124,7 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RowVersion)
-        </td>
-        -->
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TenantId }) |
             @Html.ActionLink("Details", "Details", new { id=item.TenantId }) |

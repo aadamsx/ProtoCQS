@@ -55,13 +55,15 @@
   <ItemGroup>
     <Compile Include="Configuration\ConfigurationConfig.cs" />
     <Compile Include="Configuration\TraceLogConfig.cs" />
-    <Compile Include="DomainLayerBootstrapper.cs" />
     <Compile Include="Configuration\AddressConfig.cs" />
     <Compile Include="Configuration\ContactTypeConfig.cs" />
     <Compile Include="Configuration\TenantConfig.cs" />
     <Compile Include="ClientManagementContext.cs" />
+    <Compile Include="DataBootstrapper.cs" />
+    <Compile Include="IDbContext.cs" />
     <Compile Include="Infrastructure\ContextConfiguration.cs" />
     <Compile Include="Infrastructure\DatabaseFactory.cs" />
+    <Compile Include="Infrastructure\IContextConfiguration.cs" />
     <Compile Include="Infrastructure\IDbContext.cs" />
     <Compile Include="Infrastructure\Infrastructure.cs" />
     <Compile Include="Infrastructure\NLogCommandInterceptor.cs" />

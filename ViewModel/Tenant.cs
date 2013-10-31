@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ViewModel
@@ -44,7 +45,7 @@ namespace ViewModel
         public System.Guid RowGuid { get; set; }
         public Byte[] RowVersion { get; set; }
         public int ContactTypeId { get; set; }
-
+        public IEnumerable<ContactType> Type { get; set; }
 
     }
 }

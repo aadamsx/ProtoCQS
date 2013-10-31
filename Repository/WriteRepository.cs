@@ -12,7 +12,7 @@ namespace Repository
     /// <typeparam name="TEntity"></typeparam>
     public class WriteRepository<TEntity> : IWriteRepository<TEntity> where TEntity : class
     {
-        private readonly Guid instanceId;
+        //private readonly Guid instanceId;
         //private DbSet<TEntity> dbSet;
         private ClientManagementContext context;
         public WriteRepository(ClientManagementContext context)
@@ -20,7 +20,7 @@ namespace Repository
             //if (context == null) throw new ArgumentNullException("context");
             this.context = context;
             //dbSet = context.Set<TEntity>();
-            instanceId = Guid.NewGuid();
+            //instanceId = Guid.NewGuid();
 
             // Note: if I try to do a bulk insert with the entity framework that it does use 1 insert per data row inserted
             // (thus a roundtrip for each insert). And thus that the performance is less than using an SQL "insert"
@@ -38,10 +38,10 @@ namespace Repository
             context.SaveChanges();
         }
 
-        public Guid InstanceId
-        {
-            get { return instanceId; }
-        }
+        //public Guid InstanceId
+        //{
+        //    get { return instanceId; }
+        //}
 
         //public void InsertGraph(TEntity entity)
         //{

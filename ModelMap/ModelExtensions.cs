@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using AutoMapper;
+using dm = DataModel;
+using vm = ViewModel;
 
 namespace ModelMap
 {
     public static class ModelExtensions
     {
-        public static ViewModel.Tenant ToModel(this DataModel.Tenant model) 
+        public static vm.Tenant ToModel(this dm.Tenant model) 
         {
-            return Mapper.Map<DataModel.Tenant, ViewModel.Tenant>(model);
+            return Mapper.Map<dm.Tenant, vm.Tenant>(model);
         }
 
-        public static DataModel.Tenant ToModel(this ViewModel.Tenant model)
+        public static dm.Tenant ToModel(this vm.Tenant model)
         {
-            return Mapper.Map<ViewModel.Tenant, DataModel.Tenant>(model);
+            return Mapper.Map<vm.Tenant, dm.Tenant>(model);
         }
 
-        public static IEnumerable<ViewModel.Tenant> ToModel(this IEnumerable<DataModel.Tenant> models)
+        public static IEnumerable<vm.Tenant> ToModel(this IEnumerable<dm.Tenant> models)
         {
-            return Mapper.Map<IEnumerable<DataModel.Tenant>, IEnumerable<ViewModel.Tenant>>(models);
+            return Mapper.Map<IEnumerable<dm.Tenant>, IEnumerable<vm.Tenant>>(models);
         }
 
         //public static TModel ToModel<TModel>(this IEntity entity) where TModel : IBaseViewModel

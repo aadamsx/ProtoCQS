@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using dm = DataModel;
+using vm = ViewModel;
 
 namespace ModelMap
 {
@@ -13,7 +15,8 @@ namespace ModelMap
         {
             //Mapper.CreateMap<CurrentTenantsViewModel, CurrentTenants>(); //.ForMember(dest => dest.Category, opt => opt.Ignore());
             //Mapper.CreateMap<AllTenants, TenantDetailViewModel>();
-            Mapper.CreateMap<DataModel.Tenant, ViewModel.Tenant>();
+            Mapper.CreateMap<dm.ContactType, vm.ContactType>();
+            Mapper.CreateMap<dm.Tenant, vm.Tenant>();
         }
     }
 }
