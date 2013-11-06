@@ -1,6 +1,4 @@
 ﻿using System;
-using DataModel;
-using Repository.Decorated;
 using Repository.Decorated.Logging;
 using SimpleInjector;
 using SimpleInjector.Extensions;
@@ -21,19 +19,38 @@ namespace Repository
             }
 
             container.RegisterOpenGeneric(
-                typeof(IRepositoryQuery<>),
-                typeof(RepositoryQuery<>));
-
+                typeof(ICreateRepository<>),
+                typeof(CreateRepository<>));
             container.RegisterOpenGeneric(
                 typeof(IReadRepository<>),
                 typeof(ReadRepository<>));
             container.RegisterOpenGeneric(
-                typeof(IWriteRepository<>),
-                typeof(WriteRepository<>));
+                typeof(IUpdateRepository<>),
+                typeof(UpdateRepository<>));
+            container.RegisterOpenGeneric(
+                typeof(IDeleteRepository<>),
+                typeof(DeleteRepository<>));
+
+            container.RegisterOpenGeneric(
+                typeof(IRepositoryQuery<>),
+                typeof(RepositoryQuery<>));
+
+            container.RegisterDecorator(
+                typeof(ICreateRepository<>),
+                typeof(LoggingCreateRepository<>));
+            container.RegisterDecorator(
+                typeof(IReadRepository<>), 
+                typeof(LoggingReadRepository<>));
+            container.RegisterDecorator(
+                typeof(IUpdateRepository<>),
+                typeof(LoggingUpdateRepository<>));
+            container.RegisterDecorator(
+                typeof(IDeleteRepository<>),
+                typeof(LoggingDeleteRepository<>));
 
 
-            container.RegisterDecorator(typeof(IReadRepository<>), typeof(LoggingReadRepository<>));
-            container.RegisterDecorator(typeof(IWriteRepository<>), typeof(LoggingWriteRepository<>));
+            //container.Register(typeof (ITenantReadRepository), typeof (TenantReadRepository));
+
             //container.RegisterDecorator(typeof(IReadRepository<>), typeof(LoggingClientReadRepository));
             //container.RegisterDecorator(typeof(IWriteRepository<>), typeof(LoggingClientWriteRepository));
 

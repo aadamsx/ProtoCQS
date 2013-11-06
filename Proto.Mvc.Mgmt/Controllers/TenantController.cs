@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using ModelMap;
+using ModelMap.Tenant;
 using Repository;
 
 namespace Proto.Mvc.Mgmt.Controllers
@@ -22,14 +23,14 @@ namespace Proto.Mvc.Mgmt.Controllers
     public class TenantController : Controller
     {
         public IReadRepository<DataModel.Tenant> ReadRepository { get; set; }
-        public IWriteRepository<DataModel.Tenant> WriteRepository { get; set; }
+        public ICreateRepository<DataModel.Tenant> CreateRepository { get; set; }
 
         public TenantController(
             IReadRepository<DataModel.Tenant> readRepository,
-            IWriteRepository<DataModel.Tenant> writeRepository)
+            ICreateRepository<DataModel.Tenant> createRepository)
         {
             ReadRepository = readRepository;
-            WriteRepository = writeRepository;
+            CreateRepository = createRepository;
         }
 
         // GET: /TenantManagement/
@@ -37,7 +38,7 @@ namespace Proto.Mvc.Mgmt.Controllers
         {
             //var query = new GetCurrentTenantsQuery { PageIndex = 1, PageSize = 10 };
             IEnumerable<DataModel.Tenant> tenants = ReadRepository.GetAll();
-            return View(tenants.ToModel());
+            return View(tenants.ToModels());
         }
 
         // GET: /TenantManagement/Details/5
@@ -68,7 +69,7 @@ namespace Proto.Mvc.Mgmt.Controllers
         {
             if (ModelState.IsValid)
             {
-                WriteRepository.Create(tenant.ToModel());
+                CreateRepository.Create(tenant.ToModel());
                 return RedirectToAction("Index");
             }
 
@@ -106,7 +107,7 @@ namespace Proto.Mvc.Mgmt.Controllers
                     DataModel.Tenant tenant = tenantVm.ToModel();
                     tenant.LastModifiedBy = User.Identity.Name;
 
-                    WriteRepository.Update(tenant);
+                    CreateRepository.Update(tenant);
                     return RedirectToAction("Index");
                 }
             }
@@ -239,7 +240,7 @@ namespace Proto.Mvc.Mgmt.Controllers
         {
             try
             {
-                WriteRepository.Delete(tenantVm.ToModel());
+                CreateRepository.Delete(tenantVm.ToModel());
                 return RedirectToAction("Index");
             }
             catch (DbUpdateConcurrencyException)

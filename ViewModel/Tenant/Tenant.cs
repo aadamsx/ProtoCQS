@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ViewModel
@@ -7,11 +6,14 @@ namespace ViewModel
     public class Tenant
     {
         public int TenantId { get; set; }
+        // Auto number, human readable
         public string AccountNumber { get; set; }
 
+        // Business 
         [StringLength(50, MinimumLength = 2)]
         [Display(Name = "Company Name")]
         public string Name { get; set; }
+        // bool
         public Nullable<int> Active { get; set; }
 
         [StringLength(50, MinimumLength = 2)]
@@ -45,7 +47,6 @@ namespace ViewModel
         public System.Guid RowGuid { get; set; }
         public Byte[] RowVersion { get; set; }
         public int ContactTypeId { get; set; }
-        public IEnumerable<ContactType> Type { get; set; }
-
+        public ContactType Type { get; set; }
     }
 }

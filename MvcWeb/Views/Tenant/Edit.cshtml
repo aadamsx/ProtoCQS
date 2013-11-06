@@ -1,4 +1,5 @@
-﻿@model ViewModel.Tenant
+﻿@using ViewModel
+@model TenantEdit
 
 @{
     ViewBag.Title = "Edit";
@@ -15,113 +16,113 @@
         <h4>Tenant</h4>
         <hr />
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.TenantId)
-        @Html.HiddenFor(model => model.RowGuid)
+        @Html.HiddenFor(model => model.Tenant.TenantId)
+        @Html.HiddenFor(model => model.Tenant.RowGuid)
         <!-- optimistic concurrency -->
-        @Html.HiddenFor(model => model.RowVersion)
+        @Html.HiddenFor(model => model.Tenant.RowVersion)
         
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AccountNumber, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tenant.AccountNumber, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AccountNumber)
-                @Html.ValidationMessageFor(model => model.AccountNumber)
+                @Html.EditorFor(model => model.Tenant.AccountNumber)
+                @Html.ValidationMessageFor(model => model.Tenant.AccountNumber)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tenant.Name, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
+                @Html.EditorFor(model => model.Tenant.Name)
+                @Html.ValidationMessageFor(model => model.Tenant.Name)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Active, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tenant.Active, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Active)
-                @Html.ValidationMessageFor(model => model.Active)
+                @Html.EditorFor(model => model.Tenant.Active)
+                @Html.ValidationMessageFor(model => model.Tenant.Active)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PrimaryContactFirstName, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tenant.PrimaryContactFirstName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PrimaryContactFirstName)
-                @Html.ValidationMessageFor(model => model.PrimaryContactFirstName)
+                @Html.EditorFor(model => model.Tenant.PrimaryContactFirstName)
+                @Html.ValidationMessageFor(model => model.Tenant.PrimaryContactFirstName)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PrimaryContactLastName, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tenant.PrimaryContactLastName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PrimaryContactLastName)
-                @Html.ValidationMessageFor(model => model.PrimaryContactLastName)
+                @Html.EditorFor(model => model.Tenant.PrimaryContactLastName)
+                @Html.ValidationMessageFor(model => model.Tenant.PrimaryContactLastName)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PrimaryContactPhone, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tenant.PrimaryContactPhone, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PrimaryContactPhone)
-                @Html.ValidationMessageFor(model => model.PrimaryContactPhone)
+                @Html.EditorFor(model => model.Tenant.PrimaryContactPhone)
+                @Html.ValidationMessageFor(model => model.Tenant.PrimaryContactPhone)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tenant.Description, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description)
-                @Html.ValidationMessageFor(model => model.Description)
+                @Html.EditorFor(model => model.Tenant.Description)
+                @Html.ValidationMessageFor(model => model.Tenant.Description)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tenant.Email, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Email)
-                @Html.ValidationMessageFor(model => model.Email)
+                @Html.EditorFor(model => model.Tenant.Email)
+                @Html.ValidationMessageFor(model => model.Tenant.Email)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.OfficePhone, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tenant.OfficePhone, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.OfficePhone)
-                @Html.ValidationMessageFor(model => model.OfficePhone)
+                @Html.EditorFor(model => model.Tenant.OfficePhone)
+                @Html.ValidationMessageFor(model => model.Tenant.OfficePhone)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Street, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tenant.Street, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Street)
-                @Html.ValidationMessageFor(model => model.Street)
+                @Html.EditorFor(model => model.Tenant.Street)
+                @Html.ValidationMessageFor(model => model.Tenant.Street)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.City, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tenant.City, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.City)
-                @Html.ValidationMessageFor(model => model.City)
+                @Html.EditorFor(model => model.Tenant.City)
+                @Html.ValidationMessageFor(model => model.Tenant.City)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.State, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tenant.State, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.State)
-                @Html.ValidationMessageFor(model => model.State)
+                @Html.EditorFor(model => model.Tenant.State)
+                @Html.ValidationMessageFor(model => model.Tenant.State)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Zip, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tenant.Zip, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Zip)
-                @Html.ValidationMessageFor(model => model.Zip)
+                @Html.EditorFor(model => model.Tenant.Zip)
+                @Html.ValidationMessageFor(model => model.Tenant.Zip)
             </div>
         </div>
 
@@ -155,11 +156,11 @@
         <!-- In the other Tenant Edit.cshtml file, I didn't actually have the
         contact type id on display, instead it is hiddend.  Need to test this. -->
         <div class="form-group">
-            @Html.LabelFor(model => model.ContactTypeId, "ContactTypeId", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Tenant.ContactTypeId, "ContactTypeId", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.DropDownList("ContactTypeId", String.Empty)*@
-                @Html.DropDownListFor(x => x.ContactTypeId, new SelectList(Model.Type.Name, "Value", "Text"), "-- Select Type --")
-                @Html.ValidationMessageFor(model => model.ContactTypeId)
+                @Html.DropDownListFor(model => model.Tenant.ContactTypeId, Model.Types)
+                @Html.ValidationMessageFor(model => model.Tenant.ContactTypeId)
             </div>
         </div>
 

@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using DataModel;
 
-namespace Repository
+namespace Repository.Extensions
 {
-    public static class ReadRepositoryExtensions
+    public static class ReadRepositoryExtensionsExample
     {
         // http://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=84
         //public static Tenant GetById(

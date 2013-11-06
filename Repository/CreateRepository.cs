@@ -10,12 +10,13 @@ namespace Repository
     /// Add() operations, then don't use this Generic Repo, extend this or use a Command Handler
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class WriteRepository<TEntity> : IWriteRepository<TEntity> where TEntity : class
+    public class CreateRepository<TEntity> 
+        : ICreateRepository<TEntity> where TEntity : class
     {
         //private readonly Guid instanceId;
         //private DbSet<TEntity> dbSet;
         private ClientManagementContext context;
-        public WriteRepository(ClientManagementContext context)
+        public CreateRepository(ClientManagementContext context)
         {
             //if (context == null) throw new ArgumentNullException("context");
             this.context = context;
@@ -30,7 +31,8 @@ namespace Repository
         }
 
         /// <summary>
-        /// And a private Save() method that returns true or false so you can fallback easy in the controller depending on the result
+        /// And a private Save() method that returns true or false so 
+        /// you can fallback easy in the controller depending on the result
         /// </summary>
         /// <returns></returns>
         private void Save()
@@ -38,53 +40,10 @@ namespace Repository
             context.SaveChanges();
         }
 
-        //public Guid InstanceId
-        //{
-        //    get { return instanceId; }
-        //}
-
-        //public void InsertGraph(TEntity entity)
-        //{
-        //    // What's the difference between this and Insert()?
-
-        //    dbSet.Add(entity);
-        //    Save();
-        //}
-
-        public void Create(TEntity entity)
+        public void Submit(TEntity entity)
         {
             context.Entry(entity).State = EntityState.Added;
             Save();
         }
-
-
-        public void Update(TEntity entity)
-        {
-            context.Entry(entity).State = EntityState.Modified;
-            Save();
-        }
-
-        public void Delete(object id)
-        {
-            // var entity = dbSet.Find(id);
-            //dbSet.Remove(entity);
-            // or 
-            //context.Entry(entity).State = EntityState.Deleted;
-            //Save();
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// EF will automatically attach detached objects in the graph when 
-        /// setting the state of an entity or when SaveChanges() is called
-        /// </summary>
-        /// <param name="entity"></param>
-        public void Delete(TEntity entity)
-        {
-            context.Entry(entity).State = EntityState.Deleted;
-            Save();
-        }
-
-
     }
 }

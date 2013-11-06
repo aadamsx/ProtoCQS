@@ -16,6 +16,7 @@ namespace Data
             : base("Name=ClientManagement")
         {
             Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
             //_instanceId = Guid.NewGuid();
 
             DbInterception.Add(new NLogCommandInterceptor());

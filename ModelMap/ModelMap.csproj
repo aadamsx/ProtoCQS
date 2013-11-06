@@ -51,6 +51,7 @@
     <Compile Include="DomainToViewModelMappingProfile.cs" />
     <Compile Include="ModelExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tenant\TenantModelExtensions.cs" />
     <Compile Include="ViewModelToDomainMappingProfile.cs" />
   </ItemGroup>
   <ItemGroup>

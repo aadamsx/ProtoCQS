@@ -29,13 +29,13 @@ namespace Repository
     {
 
         //private readonly Guid _instanceId;
-        protected readonly ClientManagementContext Context;
+        private readonly ClientManagementContext Context;
 
         public ReadRepository(ClientManagementContext context)
         {
             Context = context;
             //dbSet = this.context.Set<TEntity>();
-            //_instanceId = Guid.NewGuid();
+            //InstanceId = Guid.NewGuid();
 
             // set these properties for faster performance
             Context.Configuration.AutoDetectChangesEnabled = false;
@@ -70,8 +70,10 @@ namespace Repository
             return repositoryGetFluentHelper;
         }
 
-        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, 
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, 
+        public virtual IEnumerable<TEntity> Get(
+            Expression<Func<TEntity, bool>> filter = null, 
+            Func<IQueryable<TEntity>, 
+            IOrderedQueryable<TEntity>> orderBy = null, 
             List<Expression<Func<TEntity, object>>> includeProperties = null, int? page = null,
             int? pageSize = null)
         {

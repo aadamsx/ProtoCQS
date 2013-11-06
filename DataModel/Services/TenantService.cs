@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DataModel;
 
-namespace Repository.Services
+namespace DataModel.Services
 {
-    public static class TenantServices
+    public static class TenantService
     {
         public static string ContactTypeName(this Tenant tenant)
         {

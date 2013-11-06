@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using Data;
-using ModelMap;
+using ModelMap.Tenant;
 using Repository;
 using dm = DataModel;
 using vm = ViewModel;
@@ -18,17 +15,27 @@ namespace MvcWeb.Controllers
     // most of the code I commented out below is auto-generated from the scafolding process
     public class TenantController : Controller
     {
-        public IReadRepository<dm.Tenant> ReadRepository { get; set; }
-        public IWriteRepository<dm.Tenant> WriteRepository { get; set; }
+        private readonly IReadRepository<dm.ContactType> _readTypes;
+        private readonly IReadRepository<dm.Tenant> _readTenant;
+        private readonly ICreateRepository<dm.Tenant> _createTenat;
+        private readonly IUpdateRepository<dm.Tenant> _updateTenant;
+        private readonly IDeleteRepository<dm.Tenant> _deleteTenant;
 
         // private ClientManagementContext db = new ClientManagementContext();
+        // protected ITenantReadRepository Read { get; private set; }
 
         public TenantController(
-            IReadRepository<dm.Tenant> readRepository,
-            IWriteRepository<dm.Tenant> writeRepository)
+            ICreateRepository<dm.Tenant> createTenant,
+            IReadRepository<dm.Tenant> readTenant,
+            IReadRepository<dm.ContactType> readTypes,
+            IUpdateRepository<dm.Tenant> updateTenant,
+            IDeleteRepository<dm.Tenant> deleteTenant)
         {
-            ReadRepository = readRepository;
-            WriteRepository = writeRepository;
+            _readTypes = readTypes;
+            _readTenant = readTenant;
+            _createTenat = createTenant;
+            _updateTenant = updateTenant;
+            _deleteTenant = deleteTenant;
         }
 
         // GET: /Tenant/
@@ -38,8 +45,8 @@ namespace MvcWeb.Controllers
             //var tenants1 = db.Tenants.Include(t => t.Type);
             //return View(tenants.ToList());
 
-            var tenants = ReadRepository.GetAll();
-            return View(tenants.ToModel());
+            var tenants = _readTenant.GetAll();
+            return View(tenants.ToModels());
         }
 
         // GET: /Tenant/Details/5
@@ -56,8 +63,9 @@ namespace MvcWeb.Controllers
             //}
             //return View(tenant);
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var tenant = ReadRepository.GetById(id);
-            return tenant == null ? (ActionResult)HttpNotFound() : View(tenant.ToModel());
+            var tenant = _readTenant.GetById(id);
+            //var tuple = new Tuple<vm.Tenant, IEnumerable<vm.ContactType>>(tenant.ToModel(), items.ToModels());
+            return View(tenant.ToModel());
         }
 
         // GET: /Tenant/Create
@@ -73,7 +81,7 @@ namespace MvcWeb.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(
-            [Bind(Include="TenantId,AccountNumber,Name,Active,PrimaryContactFirstName,PrimaryContactLastName,PrimaryContactPhone,Description,Email,OfficePhone,Street,City,State,Zip,RowGuid,LastModifiedBy,RowVersion,ContactTypeId")] 
+            //[Bind(Include="TenantId,AccountNumber,Name,Active,PrimaryContactFirstName,PrimaryContactLastName,PrimaryContactPhone,Description,Email,OfficePhone,Street,City,State,Zip,RowGuid,LastModifiedBy,RowVersion,ContactTypeId")] 
             vm.Tenant tenant)
         {
             //if (ModelState.IsValid)
@@ -88,7 +96,7 @@ namespace MvcWeb.Controllers
 
             if (ModelState.IsValid)
             {
-                WriteRepository.Create(tenant.ToModel());
+                _createTenat.Submit(tenant.ToModel());
                 return RedirectToAction("Index");
             }
 
@@ -113,8 +121,17 @@ namespace MvcWeb.Controllers
             //return View(tenant);
 
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var tenant = ReadRepository.GetById(id);
-            return tenant == null ? (ActionResult)HttpNotFound() : View(tenant.ToModel());
+            //var tenant = _readTenant.GetById(id);
+            //var contactTypes = _readTypes.GetAll().ToList();
+            //ViewBag.contactTypeModel = new SelectList(contactTypes, "Value", "Text");
+
+            var vm = new vm.TenantEdit
+            {
+                Tenant = _readTenant.GetById(id).ToModel(),
+                Types = new SelectList(_readTypes.GetAll(), "ContactTypeId", "Name")
+            };
+
+            return View(vm);
         }
 
         // POST: /Tenant/Edit/5
@@ -123,7 +140,7 @@ namespace MvcWeb.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(
-            [Bind(Include="TenantId,AccountNumber,Name,Active,PrimaryContactFirstName,PrimaryContactLastName,PrimaryContactPhone,Description,Email,OfficePhone,Street,City,State,Zip,RowGuid,LastModifiedBy,RowVersion,ContactTypeId")] 
+            //[Bind(Include="TenantId,AccountNumber,Name,Active,PrimaryContactFirstName,PrimaryContactLastName,PrimaryContactPhone,Description,Email,OfficePhone,Street,City,State,Zip,RowGuid,LastModifiedBy,RowVersion,ContactTypeId")] 
             vm.Tenant tenant)
         {
             //if (ModelState.IsValid)
@@ -142,7 +159,7 @@ namespace MvcWeb.Controllers
                     //DataModel.Tenant tenant = tenant.ToModel();
                     //tenant.LastModifiedBy = User.Identity.Name;
 
-                    WriteRepository.Update(tenant.ToModel());
+                    _updateTenant.Submit(tenant.ToModel());
                     return RedirectToAction("Index");
                 }
             }
@@ -227,7 +244,13 @@ namespace MvcWeb.Controllers
                 ModelState.AddModelError(string.Empty, "Oops! Something went wrong, we'll try out best to fix it. Try again, and if the problem persists contact your system administrator.");
             }
 
-            return View(tenant);
+            var vm = new vm.TenantEdit
+            {
+                Tenant = tenant,
+                Types = new SelectList(_readTypes.GetAll(), "ContactTypeId", "Name")
+            };
+
+            return View(vm);
 
         }
 
@@ -252,7 +275,7 @@ namespace MvcWeb.Controllers
             //called when the user confirms the deletion.
 
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            var tenant = ReadRepository.GetById(id);
+            var tenant = _readTenant.GetById(id);
 
             if (concurrencyError.GetValueOrDefault())
             {
@@ -292,7 +315,7 @@ namespace MvcWeb.Controllers
         {
             try
             {
-                WriteRepository.Delete(tenant.ToModel());
+                _deleteTenant.Submit(tenant.ToModel());
                 return RedirectToAction("Index");
             }
             catch (DbUpdateConcurrencyException)
