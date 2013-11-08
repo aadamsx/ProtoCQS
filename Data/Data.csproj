@@ -64,6 +64,7 @@
     <Compile Include="Infrastructure\ContextConfiguration.cs" />
     <Compile Include="Infrastructure\DatabaseFactory.cs" />
     <Compile Include="Infrastructure\IContextConfiguration.cs" />
+    <Compile Include="Infrastructure\IDatabaseFactory.cs" />
     <Compile Include="Infrastructure\IDbContext.cs" />
     <Compile Include="Infrastructure\Infrastructure.cs" />
     <Compile Include="Infrastructure\NLogCommandInterceptor.cs" />
@@ -90,6 +91,10 @@
     <Content Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{87159E81-26FA-4EF0-851D-DA6C8D78E091}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{79C92AA3-8328-4E43-82C2-5A4C4B26C720}</Project>
       <Name>DataModel</Name>

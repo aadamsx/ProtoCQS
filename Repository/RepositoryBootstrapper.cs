@@ -1,4 +1,5 @@
 ﻿using System;
+using Repository.Decorated.Caching;
 using Repository.Decorated.Logging;
 using SimpleInjector;
 using SimpleInjector.Extensions;
@@ -18,35 +19,19 @@ namespace Repository
                 throw new ArgumentNullException("container");
             }
 
-            container.RegisterOpenGeneric(
-                typeof(ICreateRepository<>),
-                typeof(CreateRepository<>));
-            container.RegisterOpenGeneric(
-                typeof(IReadRepository<>),
-                typeof(ReadRepository<>));
-            container.RegisterOpenGeneric(
-                typeof(IUpdateRepository<>),
-                typeof(UpdateRepository<>));
-            container.RegisterOpenGeneric(
-                typeof(IDeleteRepository<>),
-                typeof(DeleteRepository<>));
+            container.RegisterOpenGeneric(typeof(ICreateRepository<>), typeof(CreateRepository<>));
+            container.RegisterOpenGeneric(typeof(IReadRepository<>), typeof(ReadRepository<>));
+            container.RegisterOpenGeneric(typeof(IUpdateRepository<>), typeof(UpdateRepository<>));
+            container.RegisterOpenGeneric(typeof(IDeleteRepository<>), typeof(DeleteRepository<>));
 
-            container.RegisterOpenGeneric(
-                typeof(IRepositoryQuery<>),
-                typeof(RepositoryQuery<>));
+            container.RegisterOpenGeneric(typeof(IRepositoryQuery<>), typeof(RepositoryQuery<>));
 
-            container.RegisterDecorator(
-                typeof(ICreateRepository<>),
-                typeof(LoggingCreateRepository<>));
-            container.RegisterDecorator(
-                typeof(IReadRepository<>), 
-                typeof(LoggingReadRepository<>));
-            container.RegisterDecorator(
-                typeof(IUpdateRepository<>),
-                typeof(LoggingUpdateRepository<>));
-            container.RegisterDecorator(
-                typeof(IDeleteRepository<>),
-                typeof(LoggingDeleteRepository<>));
+            container.RegisterDecorator(typeof(IReadRepository<>), typeof(CachingReadRepository<>));
+
+            container.RegisterDecorator(typeof(ICreateRepository<>), typeof(LoggingCreateRepository<>));
+            container.RegisterDecorator(typeof(IReadRepository<>), typeof(LoggingReadRepository<>));
+            container.RegisterDecorator(typeof(IUpdateRepository<>), typeof(LoggingUpdateRepository<>));
+            container.RegisterDecorator(typeof(IDeleteRepository<>), typeof(LoggingDeleteRepository<>));
 
 
             //container.Register(typeof (ITenantReadRepository), typeof (TenantReadRepository));

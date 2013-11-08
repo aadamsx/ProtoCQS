@@ -1,40 +1,43 @@
 ﻿using System.Collections.Generic;
+using Caching;
 using Core.Helper;
 
 namespace Repository.Decorated.Caching
 {
-    class CachingReadRepository<TEntity> : DecoratedReadRepository<TEntity> where TEntity : class
+    /// <summary>
+    /// Repository level cache
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    public class CachingReadRepository<TEntity> : DecoratedReadRepository<TEntity> where TEntity : class
     {
         private readonly float _cacheDurationInMinutes;
 
-        public CachingReadRepository(IReadRepository<TEntity> readRepository, float cacheDurationInMinutes)
+        public CachingReadRepository(IReadRepository<TEntity> readRepository)
             : base(readRepository)
         {
-            _cacheDurationInMinutes = cacheDurationInMinutes;
-            Check.Argument.IsNotNegativeOrZero(cacheDurationInMinutes, "cacheDurationInMinutes");
-
-            _cacheDurationInMinutes = cacheDurationInMinutes;
+            _cacheDurationInMinutes = 60;
         }
 
         public override IEnumerable<TEntity> GetAll()
         {
-            //const string CacheKey = "categories:All";
+            // might NEED to be immutable
+            var cacheKey = string.Format("Repository.GetAll.{0}", typeof(TEntity).Name);
 
-            //IEnumerable<TEntity> result;
+            IEnumerable<TEntity> result;
 
-            //Cache.TryGet(CacheKey, out result);
+            Cache.TryGet(cacheKey, out result);
 
-            //if (result == null)
-            //{
-            //    result = base.FindAll();
+            if (result == null)
+            {
+                result = base.GetAll();
 
-            //    if ((!result.IsNullOrEmpty()) && (!Cache.Contains(CacheKey)))
-            //    {
-            //        Cache.Set(CacheKey, result, SystemTime.Now().AddMinutes(_cacheDurationInMinutes));
-            //    }
-            //}
+                if ((result != null)/* && (!CacheObject.Contains(cacheKey))*/)
+                {
+                    Cache.Set(cacheKey, result, SystemTime.Now().AddMinutes(_cacheDurationInMinutes));
+                }
+            }
 
-            return null;//result;
+            return result;
         }
     }
 }

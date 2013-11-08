@@ -60,12 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decorated\Caching\CachingReadRepository.cs" />
     <Compile Include="Decorated\DecoratedDeleteRepository.cs" />
     <Compile Include="Decorated\DecoratedUpdateRepository.cs" />
     <Compile Include="Decorated\Logging\LoggingDeleteRepository.cs" />
     <Compile Include="Decorated\Logging\LoggingUpdateRepository.cs" />
     <Compile Include="Helpers\BaseRepository.cs" />
-    <Compile Include="Decorated\Caching\CachingReadRepository.cs" />
     <Compile Include="Decorated\DecoratedReadRepository.cs" />
     <Compile Include="Decorated\DecoratedCreateRepository.cs" />
     <Compile Include="Decorated\Logging\LoggingReadRepository.cs" />
@@ -94,6 +94,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Caching\Caching.csproj">
+      <Project>{793DE907-C7E3-4EEC-B0EF-1514D41CEE21}</Project>
+      <Name>Caching</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{87159E81-26FA-4EF0-851D-DA6C8D78E091}</Project>
       <Name>Core</Name>

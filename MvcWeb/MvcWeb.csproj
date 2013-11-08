@@ -264,6 +264,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Caching\Caching.csproj">
+      <Project>{793de907-c7e3-4eec-b0ef-1514d41cee21}</Project>
+      <Name>Caching</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{79c92aa3-8328-4e43-82c2-5a4c4b26c720}</Project>
       <Name>DataModel</Name>

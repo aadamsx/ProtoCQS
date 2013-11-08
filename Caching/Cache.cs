@@ -1,91 +1,152 @@
 ﻿using System;
-using System.Diagnostics;
-using Core.Helper;
+using System.Linq;
+using System.Runtime.Caching;
 
 namespace Caching
 {
+    /// <summary>
+    ///  Represents a collection of keys and values(Dictionary) with caching.
+    /// </summary>
     public static class Cache
     {
+        #region Ctor
+        public static void Initialize()
+        {
+            _cache = new MemoryCache(Guid.NewGuid().ToString());
+            _policy = new CacheItemPolicy { AbsoluteExpiration = DateTimeOffset.Now.AddMinutes(30/*cacheTimeoutMinutes*/) };
+        }
+        #endregion
+
+        #region Members
+        private static ObjectCache _cache;
+        private static CacheItemPolicy _policy;
+        private static int _cacheTimeoutMinutes;
+        #endregion
+
+        #region Public Methods
+        /// <summary>
+        /// Gets the number of key/value pairs contained in the System.Runtime.Caching.ObjectCache
+        /// </summary>
         public static int Count
         {
-            [DebuggerStepThrough]
             get
             {
-                return InternalCache.Count;
+                return _cache.Count();
             }
         }
 
-        private static ICache InternalCache
+        /// <summary>
+        /// Add new item to the dictionary.
+        /// </summary>
+        /// <param name="key">The key in the dictionary</param>
+        /// <param name="value">The value in the dictionary</param>
+        /// <param name="absoluteExpiration"></param>
+        private static void Add(string key, object value, DateTime absoluteExpiration)
         {
-            [DebuggerStepThrough]
-            get
-            {
-                return null;// IoC.Resolve<ICache>();
-            }
+            _cache.Set(key, value, absoluteExpiration);
         }
 
-        [DebuggerStepThrough]
-        public static void Clear()
+        /// <summary>
+        /// Add new item to the dictionary.
+        /// </summary>
+        /// <param name="key">The key in the dictionary</param>
+        /// <param name="value">The value in the dictionary</param>
+        /// <param name="absoluteExpiration"></param>
+        private static void Add(string key, object value)
         {
-            InternalCache.Clear();
+            _cache.Set(key, value, _policy);
         }
 
-        [DebuggerStepThrough]
-        public static bool Contains(string key)
+        /// <summary>
+        /// Remove item from the dictionary.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static bool Remove(string key)
         {
-            Check.Argument.IsNotEmpty(key, "key");
-
-            return InternalCache.Contains(key);
+            return (_cache.Remove(key) != null);
         }
 
-        [DebuggerStepThrough]
-        public static T Get<T>(string key)
+        /// <summary>
+        /// Check if the key exists
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static bool ContainsKey(string key)
         {
-            Check.Argument.IsNotEmpty(key, "key");
-
-            return InternalCache.Get<T>(key);
+            var cacheValue = _cache[key];
+            return cacheValue != null;
         }
 
-        [DebuggerStepThrough]
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static bool TryGet<T>(string key, out T value)
         {
-            Check.Argument.IsNotEmpty(key, "key");
-
-            return InternalCache.TryGet(key, out value);
+            lock (_cache)
+            {
+                //Try to get the value from the cech
+                var cacheValue = _cache[key];
+                //if the value is not in the cache
+                if (cacheValue == null)
+                {
+                    //value = default(T);
+                    value = default(T);
+                    return false;
+                }
+                value = (T) cacheValue;
+                return true;
+            }
         }
 
-        [DebuggerStepThrough]
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public static void Set<T>(string key, T value)
         {
-            Check.Argument.IsNotEmpty(key, "key");
+            lock (_cache)
+            {
+                //Try to get the value from the cech
+                var cacheValue = _cache[key];
 
-            InternalCache.Set(key, value);
+                //if the value is not in the cache
+                if (cacheValue == null)
+                    //set the new value to the cech
+                    Add(key, value);
+                else
+                    throw new Exception(string.Format("key {0} alread in cache", key));
+            }
         }
 
-        [DebuggerStepThrough]
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <param name="absoluteExpiration"></param>
         public static void Set<T>(string key, T value, DateTime absoluteExpiration)
         {
-            Check.Argument.IsNotEmpty(key, "key");
-            Check.Argument.IsNotInPast(absoluteExpiration, "absoluteExpiration");
+            lock (_cache)
+            {
+                //Try to get the value from the cech
+                var cacheValue = _cache[key];
 
-            InternalCache.Set(key, value, absoluteExpiration);
+                //if the value is not in the cache
+                if (cacheValue == null)
+                    //set the new value to the cech
+                    Add(key, value, absoluteExpiration);
+                else
+                    throw new Exception(string.Format("key {0} alread in cache", key));
+            }
         }
-
-        [DebuggerStepThrough]
-        public static void Set<T>(string key, T value, TimeSpan slidingExpiration)
-        {
-            Check.Argument.IsNotEmpty(key, "key");
-            Check.Argument.IsNotNegativeOrZero(slidingExpiration, "absoluteExpiration");
-
-            InternalCache.Set(key, value, slidingExpiration);
-        }
-
-        [DebuggerStepThrough]
-        public static void Remove(string key)
-        {
-            Check.Argument.IsNotEmpty(key, "key");
-
-            InternalCache.Remove(key);
-        }
+        #endregion
     }
 }

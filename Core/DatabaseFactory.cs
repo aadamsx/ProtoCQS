@@ -1,8 +1,7 @@
 ﻿using System;
-using Core;
 using Core.Helper;
 
-namespace Data.Infrastructure
+namespace Core
 {
     public class DatabaseFactory : IDatabaseFactory
     {
@@ -18,21 +17,12 @@ namespace Data.Infrastructure
         public DatabaseFactory()
             : this(new ConfigurationManagerWrapper().AppSettings["databaseTypeName"])
         {
-
+            
         }
 
         public IDatabase CreateInstance()
         {
             return Activator.CreateInstance(_databaseType) as IDatabase;
         }
-    }
-
-    public interface IDatabase
-    {
-        IDbContext ReturnContext();
-    }
-
-    public interface IDbContext
-    {
     }
 }

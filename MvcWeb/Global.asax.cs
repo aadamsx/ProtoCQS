@@ -1,8 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Caching;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using ModelMap;
 using MvcWeb.App_Start;
+using Cache = Caching.Cache;
 
 namespace MvcWeb
 {
@@ -16,6 +18,7 @@ namespace MvcWeb
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             SimpleInjectorInitializer.Initialize();
             AutoMapperConfiguration.Configure();
+            Cache.Initialize();
         }
     }
 }

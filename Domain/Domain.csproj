@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLayerBootstrapper.cs" />
+    <Compile Include="Caching\ICacheProvider.cs" />
     <Compile Include="CommandHandlers\Tenant\DeleteTenantCommandHandler.cs" />
     <Compile Include="CommandHandlers\Tenant\CreateOrUpdateTenantCommandHandler.cs" />
     <Compile Include="CommandHandlers\ICommandHandler.cs" />
@@ -96,6 +97,10 @@
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{DE1A7072-744F-4306-BAA3-E95FBC1AC6E0}</Project>
       <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{D69BBA16-BB4A-46F2-9D71-FDD71F74862B}</Project>
+      <Name>Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

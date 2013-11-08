@@ -19,7 +19,12 @@ namespace Data
             Configuration.ProxyCreationEnabled = false;
             //_instanceId = Guid.NewGuid();
 
-            DbInterception.Add(new NLogCommandInterceptor());
+            //DbInterception.Add(new NLogCommandInterceptor());
+        }
+
+        public ClientManagementContext GetContext()
+        {
+            return this;
         }
 
         //public ClientManagementContext(string connectionstring)
