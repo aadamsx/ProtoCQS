@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDatabase.cs" />
     <Compile Include="ConfigurationManagerWrapper.cs" />
     <Compile Include="DatabaseFactory.cs" />
     <Compile Include="Extension\DateTimeExtension.cs" />
@@ -50,7 +49,6 @@
     <Compile Include="Extension\EnumerableExtension.cs" />
     <Compile Include="Helper\SystemTime.cs" />
     <Compile Include="IConfigurationManager.cs" />
-    <Compile Include="IDatabaseFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extension\StringExtension.cs" />
   </ItemGroup>

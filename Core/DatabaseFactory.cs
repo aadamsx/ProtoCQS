@@ -3,7 +3,7 @@ using Core.Helper;
 
 namespace Core
 {
-    public class DatabaseFactory : IDatabaseFactory
+    public class DatabaseFactory// : IDatabaseFactory
     {
         private readonly Type _databaseType;
 
@@ -20,9 +20,9 @@ namespace Core
             
         }
 
-        public IDatabase CreateInstance()
-        {
-            return Activator.CreateInstance(_databaseType) as IDatabase;
-        }
+        //public IDatabase CreateInstance()
+        //{
+        //    return Activator.CreateInstance(_databaseType) as IDatabase;
+        //}
     }
 }
