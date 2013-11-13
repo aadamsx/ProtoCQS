@@ -3,26 +3,26 @@ using Core.Helper;
 
 namespace Core
 {
-    public class DatabaseFactory// : IDatabaseFactory
-    {
-        private readonly Type _databaseType;
+    //public class DatabaseFactory : IDatabaseFactory
+    //{
+    //    private readonly Type _databaseType;
 
-        public DatabaseFactory(string databaseTypeName)
-        {
-            Check.Argument.IsNotEmpty(databaseTypeName, "databaseTypeName");
+    //    public DatabaseFactory(string databaseTypeName)
+    //    {
+    //        Check.Argument.IsNotEmpty(databaseTypeName, "databaseTypeName");
 
-            _databaseType = Type.GetType(databaseTypeName, true, true);
-        }
+    //        _databaseType = Type.GetType(databaseTypeName, true, true);
+    //    }
 
-        public DatabaseFactory()
-            : this(new ConfigurationManagerWrapper().AppSettings["databaseTypeName"])
-        {
+    //    public DatabaseFactory()
+    //        : this(new ConfigurationManagerWrapper().AppSettings["databaseTypeName"])
+    //    {
             
-        }
+    //    }
 
-        //public IDatabase CreateInstance()
-        //{
-        //    return Activator.CreateInstance(_databaseType) as IDatabase;
-        //}
-    }
+    //    public IDatabase CreateInstance()
+    //    {
+    //        return Activator.CreateInstance(_databaseType) as IDatabase;
+    //    }
+    //}
 }

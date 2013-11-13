@@ -35,6 +35,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address\Address.cs" />
+    <Compile Include="Products\Product.cs" />
+    <Compile Include="Tenant\Account.cs" />
     <Compile Include="Tenant\ContactType.cs" />
     <Compile Include="Address\County.cs" />
     <Compile Include="Services\TenantService.cs" />
@@ -49,7 +51,6 @@
     <Folder Include="Clients\" />
     <Folder Include="Employees\" />
     <Folder Include="Orders\" />
-    <Folder Include="Products\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

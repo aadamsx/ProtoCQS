@@ -1,3 +1,4 @@
+using AspNetIdentity;
 using Data;
 using Repository;
 
@@ -33,10 +34,10 @@ namespace MvcWeb.App_Start
         private static void InitializeContainer(Container container)
         {
             //DataBoostrapper.Bootstrap(container);
-            MvcBoostrapper.Bootstrap(container);
+
             RepositoryBoostrapper.Bootstrap(container);
-
-
+            AspNetIdentityBoostrapper.Bootstrap(container);
+            MvcBoostrapper.Bootstrap(container);
             // For instance:
             // container.Register<IUserRepository, SqlUserRepository>();
         }

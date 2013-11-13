@@ -1,5 +1,4 @@
-﻿@model IdentityUserData.LoginViewModel
-
+﻿@model AspNetIdentity.LoginModel
 @{
     ViewBag.Title = "Log in";
 }
@@ -10,6 +9,15 @@
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
+                if (Model != null)
+                {
+                    <input data-val="true" data-val-required="The IsConfirmed field is required." id="IsConfirmed" name="IsConfirmed" type="hidden" value="true" />
+                }
+                else
+                {
+                    <input data-val="true" data-val-required="The IsConfirmed field is required." id="IsConfirmed" name="IsConfirmed" type="hidden" value="false" />;
+                }
+
                 @Html.AntiForgeryToken()
                 <h4>Use a local account to log in.</h4>
                 <hr />
@@ -41,18 +49,22 @@
                         <input type="submit" value="Log in" class="btn btn-default" />
                     </div>
                 </div>
-                <p>
-                    @Html.ActionLink("Register", "Register") if you don't have a local account.
-                </p>
+                if (Model.IsConfirmed)
+                {
+                    <p>
+                        @Html.ActionLink("Register", "Register") if you don't have a local account.
+                    </p>
+                    <p>
+                        @Html.ActionLink("Forgot Password", "ResetPassword")
+                    </p>
+                }
             }
         </section>
     </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
+
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+

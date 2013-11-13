@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\ShortGuid.cs" />
     <Compile Include="ConfigurationManagerWrapper.cs" />
     <Compile Include="DatabaseFactory.cs" />
     <Compile Include="Extension\DateTimeExtension.cs" />

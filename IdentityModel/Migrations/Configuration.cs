@@ -3,9 +3,9 @@ using System.Security.Policy;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace IdentityUserData.Migrations
+namespace AspNetIdentity.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SecurityContext>
     {
         public Configuration()
         {
@@ -13,11 +13,17 @@ namespace IdentityUserData.Migrations
             ContextKey = "IdentityManagement";
         }
 
-        protected override void Seed(ApplicationDbContext context)
+        protected override void Seed(SecurityContext context)
+        {
+            AddUsers();
+            AddUserAndRole();
+        }
+
+        private void AddUsers()
         {
             var manager = new UserManager<ApplicationUser>(
-                 new UserStore<ApplicationUser>(
-                     new ApplicationDbContext()));
+             new UserStore<ApplicationUser>(
+                 new SecurityContext()));
 
             for (int i = 0; i < 4; i++)
             {
@@ -29,23 +35,22 @@ namespace IdentityUserData.Migrations
                     FirstName = string.Format("FirstName{0}", i.ToString()),
                     LastName = string.Format("LastName{0}", i.ToString()),
                     Email = string.Format("Email{0}@Example.com", i.ToString()),
+                    IsConfirmed = false
                 };
                 manager.Create(user, string.Format("Password{0}", i.ToString()));
             }
-
-            AddUserAndRole();
         }
 
         private void AddUserAndRole()
         {
             IdentityResult ir;
             var rm = new RoleManager<IdentityRole>
-                (new RoleStore<IdentityRole>(new ApplicationDbContext()));
+                (new RoleStore<IdentityRole>(new SecurityContext()));
             ir = rm.Create(new IdentityRole("canView"));
 
 
             var um = new UserManager<ApplicationUser>(
-                new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                new UserStore<ApplicationUser>(new SecurityContext()));
 
             var user = new ApplicationUser()
             {
@@ -54,6 +59,7 @@ namespace IdentityUserData.Migrations
                 FirstName = string.Format("FirstName{0}", "A"),
                 LastName = string.Format("LastName{0}", "A"),
                 Email = string.Format("Email{0}@Example.com", "A"),
+                IsConfirmed = false
             };
 
             ir = um.Create(user, "Passw0rd1");

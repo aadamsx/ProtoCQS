@@ -69,9 +69,9 @@
     <Compile Include="Infrastructure\Infrastructure.cs" />
     <Compile Include="Infrastructure\NLogCommandInterceptor.cs" />
     <Compile Include="Infrastructure\UnitOfWorkFactory.cs" />
-    <Compile Include="Migrations\201310291844498_InitData.cs" />
-    <Compile Include="Migrations\201310291844498_InitData.Designer.cs">
-      <DependentUpon>201310291844498_InitData.cs</DependentUpon>
+    <Compile Include="Migrations\201311111622021_0.0.0-1.0.0.cs" />
+    <Compile Include="Migrations\201311111622021_0.0.0-1.0.0.Designer.cs">
+      <DependentUpon>201311111622021_0.0.0-1.0.0.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,8 +101,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201310291844498_InitData.resx">
-      <DependentUpon>201310291844498_InitData.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201311111622021_0.0.0-1.0.0.resx">
+      <DependentUpon>201311111622021_0.0.0-1.0.0.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
