@@ -1,7 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DataModel
 {
+    // The paying Person or point of contact for the Company
+    public class Customer
+    {
+        public int CustomerId { get; set; }
+        public int TenantId { get; set; }
+        public string Forename { get; set; }
+        public string Surename { get; set; }
+
+    }
+
+    // FormsPoint's Clients (These are Companies)
     public class Tenant
     {
         public Tenant()
@@ -44,5 +56,23 @@ namespace DataModel
         // Relations and Navigation
         public int ContactTypeId { get; set; }
         public virtual ContactType Type { get; set; }
+    }
+
+    public class ContactType
+    {
+        // Primary key
+        public int ContactTypeId { get; set; }
+
+        // Property
+        public string Name { get; set; }
+
+        // Entity mapping
+        public virtual ICollection<Tenant> Tenants { get; set; }
+    }
+
+    public class Account
+    {
+        public string Id { get; set; }
+        public string AccountNumber { get; set; }
     }
 }

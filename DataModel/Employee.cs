@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataModel.Products
+namespace DataModel
 {
-    public class Product
+    public class Employee
     {
+        public int EmployeeId { get; set; }
     }
 }

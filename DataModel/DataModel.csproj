@@ -34,24 +34,19 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Address\Address.cs" />
-    <Compile Include="Products\Product.cs" />
-    <Compile Include="Tenant\Account.cs" />
-    <Compile Include="Tenant\ContactType.cs" />
-    <Compile Include="Address\County.cs" />
+    <Compile Include="Address.cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Services\TenantService.cs" />
     <Compile Include="TraceLog.cs" />
-    <Compile Include="Address\StateProvince.cs" />
     <Compile Include="ConnectionConfiguration.cs" />
-    <Compile Include="Tenant\Tenant.cs" />
+    <Compile Include="Tenant.cs" />
     <Compile Include="Enums\TenantType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Clients\" />
-    <Folder Include="Employees\" />
-    <Folder Include="Orders\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

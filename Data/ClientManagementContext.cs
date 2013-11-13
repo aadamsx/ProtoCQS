@@ -1,10 +1,6 @@
-﻿using System;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure.Interception;
+﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Data.Configuration;
-using Data.Infrastructure;
-using DataModel;
 
 namespace Data
 {
@@ -54,14 +50,31 @@ namespace Data
             // Added these options, might remove them after load testing ...
             //base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            // Add any configuration or mapping stuff here
+            
+            // Tenant
             modelBuilder.Configurations.Add(new TenantConfig());
-            modelBuilder.Configurations.Add(new AddressConfig());
+            modelBuilder.Configurations.Add(new CustomerConfig());
             modelBuilder.Configurations.Add(new ContactTypeConfig());
+
+            // Address
+            modelBuilder.Configurations.Add(new AddressConfig());
+
+            // Order
+            modelBuilder.Configurations.Add(new OrderConfig());
+            modelBuilder.Configurations.Add(new OrderLineConfig());
+            modelBuilder.Configurations.Add(new PaymentConfig());
+
+            // Product
+            modelBuilder.Configurations.Add(new ProductConfig());
+            modelBuilder.Configurations.Add(new ProductPackageConfig());
+            modelBuilder.Configurations.Add(new ProductSubCategoryConfig());
+            modelBuilder.Configurations.Add(new ProductCategoryConfig());
+            modelBuilder.Configurations.Add(new ProductListPriceHistoryConfig());
+            modelBuilder.Configurations.Add(new TransactionHistoryConfig());
+
+            // Tooling
             modelBuilder.Configurations.Add(new ConnectionConfigurationConfig());
             modelBuilder.Configurations.Add(new TraceLogConfig());
-
             //Configuration.LazyLoadingEnabled = false;
         }
 

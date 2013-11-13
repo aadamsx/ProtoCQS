@@ -3,6 +3,7 @@ using DataModel;
 
 namespace Data.Configuration
 {
+    // The company, or FormsPoint's clients
     public class TenantConfig : EntityTypeConfiguration<Tenant>
     {
         public TenantConfig()
@@ -35,5 +36,26 @@ namespace Data.Configuration
 
         }
 
+    }
+
+    // The paying person or point of contact
+    public class CustomerConfig : EntityTypeConfiguration<Customer>
+    {
+        public CustomerConfig()
+        {
+            HasKey(t => t.CustomerId);
+        }
+    }
+
+    public class ContactTypeConfig : EntityTypeConfiguration<ContactType>
+    {
+        public ContactTypeConfig()
+        {
+            // Primary Key
+            HasKey(t => t.ContactTypeId);
+
+            // Properties
+            Property(t => t.Name).HasMaxLength(30).IsRequired();
+        }
     }
 }
